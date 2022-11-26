@@ -16,7 +16,7 @@ require ("./config.php");
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
     <link rel="stylesheet" href="css/feather.css">
-    <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="css/daterangepicker.css">
     <!-- App CSS -->
@@ -211,7 +211,7 @@ require ("./config.php");
           </li>
         </ul>
     </aside>
-   <main role="main" class="main-content">
+  <main role="main" class="main-content">
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
@@ -223,56 +223,47 @@ require ("./config.php");
                   <div class="card shadow">
                     <div class="card-body">
                       <!-- table -->
-                      <table class="table datatables" id="example">
+                      <table id="tableku" class="table datatables">
                         <thead>
                           <tr>
-                            <th>ID</th>
                             <th>Nama</th>
+                            <th>Tanggal Masuk</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>position</th>
-                            <th>Action</th>
+                            <th>alamat</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                                        <?php
-                                           
-                                            
-                                        $query = "SELECT * FROM karyawan";
-                                        $result = mysqli_query($koneksi, $query);
+                           <tr>
+                             <?php
+                               $query = "SELECT * FROM karyawan";
+                                $result = mysqli_query($koneksi, $query);
                                         while ($row = mysqli_fetch_array($result)){
-                                        $id = $row['id'];
                                         $userName = $row['nama'];
+                                        $tgl = $row['tgl_masuk'];
                                         $userEmail = $row['email'];
                                         $nohp = $row['nohp'];
                                         $position = $row['position'];
-
-
-                                        ?>
-                                     </tr>
-                                        <tr>
-                                            <td><?php echo $id; ?></td>
-                                            <td><?php echo $userName; ?></td>
+                                        $alamat   = $row['alamat'];     
+                                         
+                                       ?>
+                                       <td><?php echo $userName; ?></td>
+                                            <td><?php echo $tgl; ?></td>
                                             <td><?php echo $userEmail; ?></td>
                                             <td><?php echo $nohp; ?></td>
                                             <td><?php echo $position; ?></td>
-                                            <td>
-                                                <button class=" btn btn-dark btn-sm ms-auto"
-                                                    data-modal-target="#modal-edit<?php= $row['id'] ?>">Edit</button>
-                                                <button class="btn btn-danger btn-sm ms-auto"
-                                                    data-modal-target="#modal-delete<?php= $row['id'] ?>">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tr>
+                                            <td><?php echo $alamat; ?></td>
+                                         
+                                     </tr>
                                         <?php
-                                    
                                         }
-
-                                       ?>
-                                       </tr>
-                                       
+                                         ?>
+                                            
+                                            
+                                        
+                                    </tbody>
+                                    
                         </tbody>
                       </table>
                     </div>
@@ -416,13 +407,14 @@ require ("./config.php");
     <script src='js/jquery.stickOnScroll.js'></script>
     <script src="js/tinycolor-min.js"></script>
     <script src="js/config.js"></script>
-    <script src='js/jquery.dataTables.min.js'></script>
-    <script src='js/dataTables.bootstrap4.min.js'></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
     <script>
-      $(document).ready(function () {
-    $('#example').DataTable();
+        $(document).ready(function () {
+    $('#tableku').DataTable();
 });
     </script>
+   
     <script src="js/apps.js"></script>
   </body>
 </html>
