@@ -2224,6 +2224,7 @@ button.uppy-Dashboard-Item-progressIndicator:focus .uppy-Dashboard-Item-progress
 
 .uppy-Dashboard--modal {
     z-index: 1001
+    
 }
 
 .uppy-Dashboard--modal[aria-hidden=true] {
@@ -2231,31 +2232,31 @@ button.uppy-Dashboard-Item-progressIndicator:focus .uppy-Dashboard-Item-progress
 }
 
 .uppy-Dashboard--modal.uppy-Dashboard--animateOpenClose>.uppy-Dashboard-inner {
-    animation: uppy-Dashboard-slideDownAndFadeIn--small .3s cubic-bezier(0, 0, .2, 1)
+    animation: uppy-Dashboard-slideDownAndFadeIn--small .5s cubic-bezier(0, 0, .2, 1)
 }
 
 @media only screen and (min-width:820px) {
     .uppy-Dashboard--modal.uppy-Dashboard--animateOpenClose>.uppy-Dashboard-inner {
-        animation: uppy-Dashboard-slideDownAndFadeIn .3s cubic-bezier(0, 0, .2, 1)
+        animation: uppy-Dashboard-slideDownAndFadeIn .5s cubic-bezier(0, 0, .2, 1)
     }
 }
 
 .uppy-Dashboard--modal.uppy-Dashboard--animateOpenClose>.uppy-Dashboard-overlay {
-    animation: uppy-Dashboard-fadeIn .3s cubic-bezier(0, 0, .2, 1)
+    animation: uppy-Dashboard-fadeIn .5s cubic-bezier(0, 0, .2, 1)
 }
 
 .uppy-Dashboard--modal.uppy-Dashboard--animateOpenClose.uppy-Dashboard--isClosing>.uppy-Dashboard-inner {
-    animation: uppy-Dashboard-slideUpFadeOut--small .3s cubic-bezier(0, 0, .2, 1)
+    animation: uppy-Dashboard-slideUpFadeOut--small .5s cubic-bezier(0, 0, .2, 1)
 }
 
 @media only screen and (min-width:820px) {
     .uppy-Dashboard--modal.uppy-Dashboard--animateOpenClose.uppy-Dashboard--isClosing>.uppy-Dashboard-inner {
-        animation: uppy-Dashboard-slideUpFadeOut .3s cubic-bezier(0, 0, .2, 1)
+        animation: uppy-Dashboard-slideUpFadeOut .5s cubic-bezier(0, 0, .2, 1)
     }
 }
 
 .uppy-Dashboard--modal.uppy-Dashboard--animateOpenClose.uppy-Dashboard--isClosing>.uppy-Dashboard-overlay {
-    animation: uppy-Dashboard-fadeOut .3s cubic-bezier(0, 0, .2, 1)
+    animation: uppy-Dashboard-fadeOut .5s cubic-bezier(0, 0, .2, 1)
 }
 
 .uppy-Dashboard-isFixed {

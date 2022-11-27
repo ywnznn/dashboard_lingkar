@@ -3,26 +3,29 @@ require ("./config.php");
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-    <title>Lingkar Angkringan</title>
-    <!-- Simple bar CSS -->
-    <link rel="stylesheet" href="css/simplebar.css">
-    <!-- Fonts CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!-- Icons CSS -->
-    <link rel="stylesheet" href="css/feather.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
-    <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="css/daterangepicker.css">
-    <!-- App CSS -->
-    <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
-  </head>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+  <title>Lingkar Angkringan</title>
+  <!-- Simple bar CSS -->
+  <link rel="stylesheet" href="css/simplebar.css">
+  <!-- Fonts CSS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- Icons CSS -->
+  <link rel="stylesheet" href="css/feather.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+  <!-- Date Range Picker CSS -->
+  <link rel="stylesheet" href="css/daterangepicker.css">
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
+  <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
+</head>
 
 <body class="vertical  dark  ">
   <div class="wrapper">
@@ -36,11 +39,11 @@ require ("./config.php");
       </form>
       <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="./index.php" id="modeSwitcher" data-mode="dark">
-              <i class="fe fe-sun fe-16"></i>
-            </a>
-          </li>
-          <li class="nav-item">
+          <a class="nav-link text-muted my-2" href="./index.php" id="modeSwitcher" data-mode="dark">
+            <i class="fe fe-sun fe-16"></i>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
             <span class="fe fe-grid fe-16"></span>
           </a>
@@ -178,12 +181,12 @@ require ("./config.php");
               <br>
               <i class="fe fe-external-link"></i>
               <span class="ml-3 item-text">Lingkar Cafe</span>
-            <br>
-            <br>  
+              <br>
+              <br>
             </a>
             <p class="text-muted nav-heading mt-4 mb-1">
-          <span> USER SETTINGS</span>
-        </p>
+              <span> USER SETTINGS</span>
+            </p>
           </li>
           </li>
         </ul>
@@ -198,8 +201,7 @@ require ("./config.php");
                 <a class="nav-link pl-3" href="./accountsetting.php"><span class="ml-1 item-text">Account</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./profil.php"><span
-                    class="ml-1 item-text">Profile</span></a>
+                <a class="nav-link pl-3" href="./profil.php"><span class="ml-1 item-text">Profile</span></a>
               </li>
             </ul>
           <li class="nav-item w-100">
@@ -211,53 +213,104 @@ require ("./config.php");
           </li>
         </ul>
     </aside>
-  <main role="main" class="main-content">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <h2 class="mb-2 page-title">Data table</h2>
-              <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
-              <button class="btn btn-success btn-sm ms-auto " data-toggle="modal" data-target=".modal-right<?= $row['id'] ?>">
-                  Add User
-                </button>
-                <!-- Slide Modal -->
-                      <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="defaultModalLabel">Modal title</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui urna, cursus mollis cursus vitae, fringilla vel augue. In vitae dui ut ex fringilla consectetur. Sed vulputate ante arcu, non vehicula mauris porttitor quis. Praesent tempor varius orci sit amet sodales. Nullam feugiat condimentum posuere. Vivamus bibendum mattis mi, vitae placerat lorem sagittis nec. Proin ac magna iaculis, faucibus odio sit amet, volutpat felis. Proin eleifend suscipit eros, quis vulputate tellus condimentum eget. Maecenas eget dui velit. Aenean in maximus est, sit amet convallis tortor. In vel bibendum mauris, id rhoncus lectus. Suspendisse ullamcorper bibendum tellus a tincidunt. Donec feugiat dolor lectus, sed ullamcorper ante rutrum non. Mauris vestibulum, metus sit amet lobortis fringilla, dui est venenatis ligula, a euismod sem augue vel lorem. Nunc feugiat eget tortor vel tristique. Mauris lobortis efficitur ligula, et consectetur lectus maximus sed. </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn mb-2 btn-primary">Save changes</button>
-                            </div>
+    <main role="main" class="main-content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <h2 class="mb-2 page-title">Data table</h2>
+            <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
+            <button type="button" class="btn mb-2 btn-primary" data-toggle="modal" data-target=".modal-right">Slide
+              Right</button>
+            <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog"
+              aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body-add">
+                    <form action="users.view.php" method="post" enctype="multipart/form-data">
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Name</label>
+                        <input class="form-control" id="nama" type="text" value="" placeholder="Enter Name"
+                          maxlength="30" name="txt_nama" id="txt_nama" required />
+
+                      </div>
+                      <div class="form-group mb-3">
+                          <label for="customFile">Custom file input</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
                           </div>
                         </div>
+
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">No Hp</label>
+                        <input class="form-control" id="nohp" type="text" value="" placeholder="Enter No Hp"
+                          oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');"
+                          maxlength="12" name="txt_nohp" id="txt_nohp" required />
+
                       </div>
-              <div class="row my-4">
-                <!-- Small table -->
-                <div class="col-md-12">
-                  <div class="card shadow">
-                    <div class="card-body">
-                      <!-- table -->
-                      <table id="tableku" class="table datatables">
-                        <thead>
-                          <tr>
-                            <th>Nama</th>
-                            <th>Tanggal Masuk</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>position</th>
-                            <th>alamat</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                           <tr>
-                             <?php
+
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Email</label>
+                        <input class="form-control" id="email" type="email" value="" placeholder="Enter Email"
+                          maxlength="30" name="txt_mail" id="txt_mail" required />
+
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Username</label>
+                        <input class="form-control" id="username" type="text" value="" placeholder="Enter Username"
+                          maxlength="30" name="txt_user" id="txt_user" required />
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Password</label>
+                        <input class="form-control" id="password" type="password" value="" placeholder="Enter Password"
+                          maxlength="30" name="txt_pw" id="txt_pw" required />
+
+                      </div>
+
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn mb-2 btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="row my-4">
+              <!-- Small table -->
+              <div class="col-md-12">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <!-- table -->
+                    <table id="tableku" class="table datatables">
+                      <thead>
+                        <tr>
+                          <th>Nama</th>
+                          <th>Tanggal Masuk</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>position</th>
+                          <th>alamat</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <?php
                                $query = "SELECT * FROM karyawan";
                                 $result = mysqli_query($koneksi, $query);
                                         while ($row = mysqli_fetch_array($result)){
@@ -269,178 +322,181 @@ require ("./config.php");
                                             
                                          
                                        ?>
-                                       <td><?php echo $userName; ?></td>
-                                            <td><?php echo $tgl; ?></td>
-                                            <td><?php echo $userEmail; ?></td>
-                                            <td><?php echo $nohp; ?></td>
-                                            <td><?php echo $position; ?></td>
-                                            <td>
-                                                <button class=" btn btn-primary btn-s"
-                                                    data-modal-target="#modal-edit<?php= $row['id'] ?>">Edit</button>
-                                                <button class="btn btn-danger btn-sm ms-auto"
-                                                    data-modal-target="#modal-delete<?php= $row['id'] ?>">Delete</button>
-                                            </td>
-                                         
-                                     </tr>
-                                        <?php
+                          <td><?php echo $userName; ?></td>
+                          <td><?php echo $tgl; ?></td>
+                          <td><?php echo $userEmail; ?></td>
+                          <td><?php echo $nohp; ?></td>
+                          <td><?php echo $position; ?></td>
+                          <td>
+                            <button class=" btn btn-primary btn-sm ms-auto"
+                              data-modal-target="#modal-edit<?php= $row['id'] ?>">Edit</button>
+                            <button class="btn btn-danger btn-sm ms-auto"
+                              data-modal-target="#modal-delete<?php= $row['id'] ?>">Delete</button>
+                          </td>
+
+                        </tr>
+                        <?php
                                         }
                                          ?>
-                                            
-                                            
-                                        
-                                    </tbody>
-                                    
-                        </tbody>
-                      </table>
+
+
+
+                      </tbody>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div> <!-- simple table -->
+            </div> <!-- end section -->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+      <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="list-group list-group-flush my-n3">
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-box fe-24"></span>
+                    </div>
+                    <div class="col">
+                      <small><strong>Package has uploaded successfull</strong></small>
+                      <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                      <small class="badge badge-pill badge-light text-muted">1m ago</small>
                     </div>
                   </div>
-                </div> <!-- simple table -->
-              </div> <!-- end section -->
-            </div> <!-- .col-12 -->
-          </div> <!-- .row -->
-        </div> <!-- .container-fluid -->
-        <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="list-group list-group-flush my-n3">
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-box fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Package has uploaded successfull</strong></small>
-                        <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                        <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                      </div>
+                </div>
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-download fe-24"></span>
+                    </div>
+                    <div class="col">
+                      <small><strong>Widgets are updated successfull</strong></small>
+                      <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
+                      <small class="badge badge-pill badge-light text-muted">2m ago</small>
                     </div>
                   </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-download fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Widgets are updated successfull</strong></small>
-                        <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                        <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                      </div>
+                </div>
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-inbox fe-24"></span>
                     </div>
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-inbox fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Notifications have been sent</strong></small>
-                        <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                        <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                      </div>
-                    </div> <!-- / .row -->
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-link fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Link was attached to menu</strong></small>
-                        <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                        <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                      </div>
+                    <div class="col">
+                      <small><strong>Notifications have been sent</strong></small>
+                      <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
+                      <small class="badge badge-pill badge-light text-muted">30m ago</small>
                     </div>
                   </div> <!-- / .row -->
-                </div> <!-- / .list-group -->
+                </div>
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-link fe-24"></span>
+                    </div>
+                    <div class="col">
+                      <small><strong>Link was attached to menu</strong></small>
+                      <div class="my-0 text-muted small">New layout has been attached to the menu</div>
+                      <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                    </div>
+                  </div>
+                </div> <!-- / .row -->
+              </div> <!-- / .list-group -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body px-5">
+              <div class="row align-items-center">
+                <div class="col-6 text-center">
+                  <div class="squircle bg-success justify-content-center">
+                    <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Control area</p>
+                </div>
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Activity</p>
+                </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+              <div class="row align-items-center">
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Droplet</p>
+                </div>
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Upload</p>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Users</p>
+                </div>
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Settings</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body px-5">
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-success justify-content-center">
-                      <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Control area</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Activity</p>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Droplet</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Upload</p>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Users</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Settings</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main> <!-- main -->
-    </div> <!-- .wrapper -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/simplebar.min.js"></script>
-    <script src='js/daterangepicker.js'></script>
-    <script src='js/jquery.stickOnScroll.js'></script>
-    <script src="js/tinycolor-min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-    $('#tableku').DataTable();
-});
-    </script>
-   
-    <script src="js/apps.js"></script>
-  </body>
+      </div>
+    </main> <!-- main -->
+  </div> <!-- .wrapper -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/simplebar.min.js"></script>
+  <script src='js/daterangepicker.js'></script>
+  <script src='js/jquery.stickOnScroll.js'></script>
+  <script src="js/tinycolor-min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tableku').DataTable();
+    });
+  </script>
+
+  <script src="js/apps.js"></script>
+</body>
+
 </html>
