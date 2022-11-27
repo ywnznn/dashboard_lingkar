@@ -1,5 +1,6 @@
 <?php
 require ("./config.php");
+error_reporting(1);
 ?>
 <!doctype html>
 <html lang="en">
@@ -241,18 +242,20 @@ require ("./config.php");
                           maxlength="30" name="txt_nama" id="txt_nama" required />
 
                       </div>
-                      <div class="form-group mb-3">
-                          <label for="customFile">Photo</label>
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" name="foto">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
-                          </div>
-                        </div>
+                      <div class="mb-3">
+                       <label for="formFile" class="form-label">Default file input example</label>
+                         <input class="form-control" type="file" id="formFile" name="foto">
+                             </div>
                        
                                              <div class="form-group mb-3">
                         <label for="example-date">Tanggal Masuk</label>
                         <input class="form-control" id="example-date" type="date" name="txt_tgl">
                       </div>
+                      <div class="form-group">
+                <label for="example-text-input" class="form-control-label">Email</label>
+                <input class="form-control" id="email" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_mail" id="txt_mail" required />
+
+              </div>  
 
                       <div class="form-group">
                         <label for="example-text-input" class="form-control-label">No Hp</label>
@@ -264,11 +267,10 @@ require ("./config.php");
 
 
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Email</label>
-                        <input class="form-control" id="email" type="email" value="" placeholder="Enter Email"
-                          maxlength="30" name="txt_mail" id="txt_mail" required />
+                <label for="example-text-input" class="form-control-label">Alamat</label>
+                <input class="form-control" id="username" type="text" value="" placeholder="Enter Username" maxlength="30" name="txt_alamat" id="txt_user" required />
 
-                      </div>
+              </div>
 
 
                     </form>
@@ -279,7 +281,6 @@ require ("./config.php");
                   </div>
                 </div>
               </div>
-              
             </div>
             <div class="row my-4">
               <!-- Small table -->
@@ -295,6 +296,7 @@ require ("./config.php");
                           <th>Tanggal Masuk</th>
                           <th>Email</th>
                           <th>Phone</th>
+                          <th>alamat</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -305,10 +307,11 @@ require ("./config.php");
                                 $result = mysqli_query($koneksi, $query);
                                         while ($row = mysqli_fetch_array($result)){
                                         $userName = $row['nama'];
+                                        $foto = $row['foto'];
                                         $tgl = $row['tgl_masuk'];
                                         $userEmail = $row['email'];
                                         $nohp = $row['nohp'];
-                                        $foto = $row['foto'];
+                                        $alamat =$row['alamat']
                                             
                                          
                                        ?>
@@ -317,12 +320,11 @@ require ("./config.php");
                           <td><?php echo $tgl; ?></td>
                           <td><?php echo $userEmail; ?></td>
                           <td><?php echo $nohp; ?></td>
+                          <td><?php echo $alamat; ?></td>
                           
                           <td>
-                            <button class=" btn btn-primary btn-sm ms-auto"
-                              data-modal-target="#modal-edit<?php= $row['id'] ?>">Edit</button>
-                            <button class="btn btn-danger btn-sm ms-auto"
-                              data-modal-target="#modal-delete<?php= $row['id'] ?>">Delete</button>
+                            <button type="button" class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target=".modal-right<?php= $row['id'] ?>">edit</button>
+                            <button class="btn btn-danger btn-sm ms-auto" data-modal-target="#modal-delete<?php= $row['id'] ?>">Delete</button>
                           </td>
 
                         </tr>
@@ -343,6 +345,70 @@ require ("./config.php");
           </div> <!-- .col-12 -->
         </div> <!-- .row -->
       </div> <!-- .container-fluid -->
+      <!-- POP UP EDIT -->
+            <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog"
+              aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
+                <div class="modal-content"><br>
+                    
+                  <div class="modal-header">
+                    
+                    <h5 class="modal-title" id="defaultModalLabel">Add Karyawan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body-add">
+                    <form action="editkaryawan.php" method="post" enctype="multipart/form-data">
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Nama</label>
+                        <input class="form-control" id="nama" type="text" value="" placeholder="Enter Name"
+                          maxlength="30" name="txt_nama" id="txt_nama" required />
+
+                      </div>
+                      <div class="mb-3">
+                       <label for="formFile" class="form-label">Default file input example</label>
+                         <input class="form-control" type="file" id="formFile" name="foto">
+                             </div>
+                       
+                                             <div class="form-group mb-3">
+                        <label for="example-date">Tanggal Masuk</label>
+                        <input class="form-control" id="example-date" type="date" name="txt_tgl">
+                      </div>
+                      <div class="form-group">
+                <label for="example-text-input" class="form-control-label">Email</label>
+                <input class="form-control" id="email" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_mail" id="txt_mail" required />
+
+              </div>  
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">No Hp</label>
+                        <input class="form-control" id="nohp" type="text" value="" placeholder="Enter No Hp"
+                          oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');"
+                          maxlength="12" name="txt_nohp" id="txt_nohp" required />
+
+                      </div>
+
+
+                      <div class="form-group">
+                <label for="example-text-input" class="form-control-label">Alamat</label>
+                <input class="form-control" id="username" type="text" value="" placeholder="Enter Username" maxlength="30" name="txt_alamat" id="txt_user" required />
+
+              </div>
+
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn mb-2 btn-primary">Add User</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <!-- END POP UP EDIT -->
+      
       <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
@@ -494,20 +560,21 @@ require ("./config.php");
 <?php
 
 require('./config.php');
-session_start();
+// session_start();
 error_reporting(1);
 if (isset($_POST['add-user'])) {
   $userNama = $_POST['txt_nama'];
   $userNoHp = $_POST['txt_nohp'];
   $userMail = $_POST['txt_mail'];
   $tglmasuk = $_POST['txt_tgl'];
+  $alamat = $_POST['txt_alamat'];
   
 
   $foto = $_FILES['foto']['name'];
   $file_tmp = $_FILES['foto']['tmp_name'];
   move_uploaded_file($file_tmp, '../foto/user/' . $foto);
 
-  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp', email = '$userMail', tgl_masuk = '$tglmasuk'";
+  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp', email = '$userMail', tgl_masuk = '$tglmasuk', alamat = '$alamat'";
   $result   = mysqli_query($koneksi, $query);
 
 
