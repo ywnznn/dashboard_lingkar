@@ -216,7 +216,28 @@ require ("./config.php");
           <div class="row justify-content-center">
             <div class="col-12">
               <h2 class="mb-2 page-title">Data table</h2>
-              <p class="card-text">DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table. </p>
+              <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
+              <button class="btn btn-success btn-sm ms-auto " data-toggle="modal" data-target=".modal-right<?= $row['id'] ?>">
+                  Add User
+                </button>
+                <!-- Slide Modal -->
+                      <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="defaultModalLabel">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui urna, cursus mollis cursus vitae, fringilla vel augue. In vitae dui ut ex fringilla consectetur. Sed vulputate ante arcu, non vehicula mauris porttitor quis. Praesent tempor varius orci sit amet sodales. Nullam feugiat condimentum posuere. Vivamus bibendum mattis mi, vitae placerat lorem sagittis nec. Proin ac magna iaculis, faucibus odio sit amet, volutpat felis. Proin eleifend suscipit eros, quis vulputate tellus condimentum eget. Maecenas eget dui velit. Aenean in maximus est, sit amet convallis tortor. In vel bibendum mauris, id rhoncus lectus. Suspendisse ullamcorper bibendum tellus a tincidunt. Donec feugiat dolor lectus, sed ullamcorper ante rutrum non. Mauris vestibulum, metus sit amet lobortis fringilla, dui est venenatis ligula, a euismod sem augue vel lorem. Nunc feugiat eget tortor vel tristique. Mauris lobortis efficitur ligula, et consectetur lectus maximus sed. </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn mb-2 btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
               <div class="row my-4">
                 <!-- Small table -->
                 <div class="col-md-12">
@@ -245,7 +266,7 @@ require ("./config.php");
                                         $userEmail = $row['email'];
                                         $nohp = $row['nohp'];
                                         $position = $row['position'];
-                                        $alamat   = $row['alamat'];     
+                                            
                                          
                                        ?>
                                        <td><?php echo $userName; ?></td>
@@ -253,7 +274,12 @@ require ("./config.php");
                                             <td><?php echo $userEmail; ?></td>
                                             <td><?php echo $nohp; ?></td>
                                             <td><?php echo $position; ?></td>
-                                            <td><?php echo $alamat; ?></td>
+                                            <td>
+                                                <button class=" btn btn-primary btn-s"
+                                                    data-modal-target="#modal-edit<?php= $row['id'] ?>">Edit</button>
+                                                <button class="btn btn-danger btn-sm ms-auto"
+                                                    data-modal-target="#modal-delete<?php= $row['id'] ?>">Delete</button>
+                                            </td>
                                          
                                      </tr>
                                         <?php
