@@ -219,35 +219,40 @@ require ("./config.php");
           <div class="col-12">
             <h2 class="mb-2 page-title">Data table</h2>
             <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
-            <button type="button" class="btn mb-2 btn-primary" data-toggle="modal" data-target=".modal-right">Slide
-              Right</button>
+            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Karyawan</button>
             <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog"
               aria-labelledby="defaultModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
-                <div class="modal-content">
+                <div class="modal-content"><br>
+                    
                   <div class="modal-header">
-                    <h5 class="modal-title" id="defaultModalLabel">Modal title</h5>
+                    
+                    <h5 class="modal-title" id="defaultModalLabel">Add Karyawan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body-add">
-                    <form action="users.view.php" method="post" enctype="multipart/form-data">
+                    <form action="karyawan.php" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Name</label>
+                        <label for="example-text-input" class="form-control-label">Nama</label>
                         <input class="form-control" id="nama" type="text" value="" placeholder="Enter Name"
                           maxlength="30" name="txt_nama" id="txt_nama" required />
 
                       </div>
                       <div class="form-group mb-3">
-                          <label for="customFile">Custom file input</label>
+                          <label for="customFile">Photo</label>
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile">
+                            <input type="file" class="custom-file-input" id="customFile" name="foto">
                             <label class="custom-file-label" for="customFile">Choose file</label>
                           </div>
                         </div>
-
+                       
+                                             <div class="form-group mb-3">
+                        <label for="example-date">Tanggal Masuk</label>
+                        <input class="form-control" id="example-date" type="date" name="txt_tgl">
+                      </div>
 
                       <div class="form-group">
                         <label for="example-text-input" class="form-control-label">No Hp</label>
@@ -266,26 +271,11 @@ require ("./config.php");
                       </div>
 
 
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Username</label>
-                        <input class="form-control" id="username" type="text" value="" placeholder="Enter Username"
-                          maxlength="30" name="txt_user" id="txt_user" required />
-
-                      </div>
-
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Password</label>
-                        <input class="form-control" id="password" type="password" value="" placeholder="Enter Password"
-                          maxlength="30" name="txt_pw" id="txt_pw" required />
-
-                      </div>
-
-
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn mb-2 btn-primary">Save changes</button>
+                    <button type="button" class="btn mb-2 btn-primary">Add User</button>
                   </div>
                 </div>
               </div>
@@ -301,11 +291,11 @@ require ("./config.php");
                       <thead>
                         <tr>
                           <th>Nama</th>
+                          <th>Photo profile</th>
                           <th>Tanggal Masuk</th>
                           <th>Email</th>
                           <th>Phone</th>
-                          <th>position</th>
-                          <th>alamat</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -318,15 +308,16 @@ require ("./config.php");
                                         $tgl = $row['tgl_masuk'];
                                         $userEmail = $row['email'];
                                         $nohp = $row['nohp'];
-                                        $position = $row['position'];
+                                        $foto = $row['foto'];
                                             
                                          
                                        ?>
                           <td><?php echo $userName; ?></td>
+                          <td><?php echo $foto; ?></td>
                           <td><?php echo $tgl; ?></td>
                           <td><?php echo $userEmail; ?></td>
                           <td><?php echo $nohp; ?></td>
-                          <td><?php echo $position; ?></td>
+                          
                           <td>
                             <button class=" btn btn-primary btn-sm ms-auto"
                               data-modal-target="#modal-edit<?php= $row['id'] ?>">Edit</button>
@@ -500,3 +491,40 @@ require ("./config.php");
 </body>
 
 </html>
+<?php
+
+require('./config.php');
+session_start();
+error_reporting(1);
+if (isset($_POST['add-user'])) {
+  $userNama = $_POST['txt_nama'];
+  $userNoHp = $_POST['txt_nohp'];
+  $userMail = $_POST['txt_mail'];
+  $tglmasuk = $_POST['txt_tgl'];
+  
+
+  $foto = $_FILES['foto']['name'];
+  $file_tmp = $_FILES['foto']['tmp_name'];
+  move_uploaded_file($file_tmp, '../foto/user/' . $foto);
+
+  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp', email = '$userMail', tgl_masuk = '$tglmasuk'";
+  $result   = mysqli_query($koneksi, $query);
+
+
+  if ($result) {
+    echo "<script>
+		Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
+		}).then((result) => {if (result.value)
+			{window.location = '';}
+		})</script>";
+  } else {
+
+    echo "<script>
+			Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
+			}).then((result) => {if (result.value)
+				{window.location = '';}
+			})</script>";
+  }
+}
+
+?>
