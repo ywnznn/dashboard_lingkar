@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 27, 2022 at 01:00 PM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- Host: 127.0.0.1
+-- Generation Time: Nov 28, 2022 at 04:43 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,24 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `karyawan` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `tgl_masuk` varchar(255) NOT NULL,
+  `tgl_masuk` date NOT NULL,
   `email` varchar(255) NOT NULL,
   `nohp` varchar(20) NOT NULL,
   `foto` varchar(255) NOT NULL,
   `alamat` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `karyawan`
 --
 
 INSERT INTO `karyawan` (`id`, `nama`, `tgl_masuk`, `email`, `nohp`, `foto`, `alamat`) VALUES
-(14, 'Rizal KA', '', 'rrizalkaa@gmail.com', '081230147253', 'bos', 'jepara'),
-(15, 'fitria ambar pratiwi', '', 'tiwitiwi@gmail.com', '081230147253', 'bos', 'sa'),
-(16, 'dimas anjay', '', 'dimas@gma.c', '121212', 'babu', 'sass'),
-(17, 'agnes', '', 'agnes@gmac.c', '23232323', 'barista', 'saa'),
-(18, 'ersandra', '', 'ecaeca@gmail.com', '121212', 'brand ambassador', 'tidar'),
-(19, 'q', '', 'q', 'q', 'q', 'q');
+(26, 'Bjirka', '2022-11-28', 'bjirkangab@gmail.com', '085607743539', 'bjorka.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -60,7 +55,7 @@ CREATE TABLE `login` (
   `nama` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `login`
@@ -82,7 +77,7 @@ CREATE TABLE `menu` (
   `nama` varchar(50) NOT NULL,
   `category` enum('Makanan','Minuman') NOT NULL,
   `harga` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Indexes for dumped tables
@@ -114,7 +109,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `login`

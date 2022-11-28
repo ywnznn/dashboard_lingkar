@@ -1,6 +1,48 @@
 <?php
-require ("./config.php");
-error_reporting(1);
+
+require('./config.php');
+session_start();
+error_reporting(0);
+if (isset($_POST['add-user'])) {
+  $userNama = $_POST['txt_nama'];
+  $userNoHp = $_POST['txt_nohp'];
+  $userMail = $_POST['txt_email'];
+  $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
+  $userAlamat = $_POST['txt_alamat'];
+
+
+  $foto = $_FILES['foto']['name'];
+  $file_tmp = $_FILES['foto']['tmp_name'];
+  move_uploaded_file($file_tmp, './foto/user/' . $foto);
+
+  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp',  tgl_masuk = '$tglmasuk',  email = '$userMail', alamat = '$userAlamat'";
+  $result   = mysqli_query($koneksi, $query);
+  if ($query) {
+    header("location:karyawan.php");
+  }
+  else {
+    header("location:karyawan.php");
+  }
+
+
+
+
+  // if ($result) {
+  //   echo "<script>
+  // 	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
+  // 	}).then((result) => {if (result.value)
+  // 		{window.location = '';}
+  // 	})</script>";
+  // } else {
+
+  //   echo "<script>
+  // 		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
+  // 		}).then((result) => {if (result.value)
+  // 			{window.location = '';}
+  // 		})</script>";
+  // }
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,9 +57,7 @@ error_reporting(1);
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
   <!-- Fonts CSS -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <!-- Icons CSS -->
   <link rel="stylesheet" href="css/feather.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
@@ -26,7 +66,6 @@ error_reporting(1);
   <!-- App CSS -->
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 </head>
 
 <body class="vertical  dark  ">
@@ -36,8 +75,7 @@ error_reporting(1);
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
       <form class="form-inline mr-auto searchform text-muted">
-        <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search"
-          placeholder="Type something..." aria-label="Search">
+        <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
       </form>
       <ul class="nav">
         <li class="nav-item">
@@ -57,8 +95,7 @@ error_reporting(1);
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
               <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
             </span>
@@ -79,8 +116,7 @@ error_reporting(1);
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
           <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-            <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
+            <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
               <g>
                 <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
                 <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
@@ -168,8 +204,7 @@ error_reporting(1);
                 <a class="nav-link pl-3" href="./chart-chartjs.html"><span class="ml-1 item-text">Chartjs</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./chart-apexcharts.html"><span
-                    class="ml-1 item-text">ApexCharts</span></a>
+                <a class="nav-link pl-3" href="./chart-apexcharts.html"><span class="ml-1 item-text">ApexCharts</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="./datamaps.html"><span class="ml-1 item-text">Datamaps</span></a>
@@ -222,67 +257,62 @@ error_reporting(1);
             <h2 class="mb-2 page-title">Data table</h2>
             <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
             <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Karyawan</button>
-            <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog"
-              aria-labelledby="defaultModalLabel" aria-hidden="true">
+            <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
                 <div class="modal-content"><br>
-                    
+
                   <div class="modal-header">
-                    
+
                     <h5 class="modal-title" id="defaultModalLabel">Add Karyawan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body-add">
-                    <form action="./addkaryawan.php" method="post" enctype="multipart/form-data">
+                  <form action="" method="post" enctype="multipart/form-data">
+                    <div class="modal-body-add">
+
 
                       <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Nama</label>
-                        <input class="form-control" id="nama" type="text" value="" placeholder="Enter Name"
-                          maxlength="30" name="txt_nama" id="txt_nama" required />
+                        <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="txt_nama" required />
 
                       </div>
-                      <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input example</label>
-                       <input class="form-control" type="file" id="foto" name="foto">
-                       </div>
-                       
-                                             <div class="form-group mb-3">
+                      <div class="form-group mb-3">
+                        <label for="customFile">Photo</label>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFile" name="foto">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                      </div>
+
+                      <div class="form-group mb-3">
                         <label for="example-date">Tanggal Masuk</label>
-                        <input class="form-control" id="example-date" type="date" name="txt_tgl" id="txt_tgl">
+                        <input class="form-control" id="example-date" type="date" name="txt_tgl_masuk">
                       </div>
-                      <div class="form-group">
-                <label for="example-text-input" class="form-control-label">Email</label>
-                <input class="form-control" id="email" type="text" value="" placeholder="Enter Email" maxlength="30" name="txt_mail" id="txt_mail" required />
-
-              </div>  
 
                       <div class="form-group">
                         <label for="example-text-input" class="form-control-label">No Hp</label>
-                        <input class="form-control" id="nohp" type="text" value="" placeholder="Enter No Hp"
-                          oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');"
-                          maxlength="12" name="txt_nohp" id="txt_nohp" required />
+                        <input class="form-control" name="txt_nohp" type="text" value="" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" required />
 
                       </div>
 
 
                       <div class="form-group">
-                <label for="example-text-input" class="form-control-label">Alamat</label>
-                <input class="form-control" id="username" type="text" value="" placeholder="Enter Username" maxlength="30" name="txt_alamat" id="txt_alamat" required />
+                        <label for="example-text-input" class="form-control-label">Email</label>
+                        <input class="form-control" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_email" required />
 
-              </div>
+                      </div>
 
-
-                    
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn mb-2 btn-primary" id="add-user" name="add-user">Add User</button>
-                  </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                      <button class="btn mb-2 btn-primary" type="submit" name="add-user">Add User</button>
+                    </div>
                   </form>
+
                 </div>
               </div>
+
             </div>
             <div class="row my-4">
               <!-- Small table -->
@@ -298,41 +328,44 @@ error_reporting(1);
                           <th>Tanggal Masuk</th>
                           <th>Email</th>
                           <th>Phone</th>
-                          <th>alamat</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <?php
-                               $query = "SELECT * FROM karyawan";
-                                $result = mysqli_query($koneksi, $query);
-                                        while ($row = mysqli_fetch_array($result)){
-                                        $userName = $row['nama'];
-                                        $foto = $row['foto'];
-                                        $tgl = $row['tgl_masuk'];
-                                        $userEmail = $row['email'];
-                                        $nohp = $row['nohp'];
-                                        $alamat =$row['alamat']
-                                            
-                                         
-                                       ?>
-                          <td><?php echo $userName; ?></td>
-                          <td><?php echo $foto; ?></td>
-                          <td><?php echo $tgl; ?></td>
-                          <td><?php echo $userEmail; ?></td>
-                          <td><?php echo $nohp; ?></td>
-                          <td><?php echo $alamat; ?></td>
-                          
-                          <td>
-                            <button type="button" class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target=".modal-right<?php= $row['id'] ?>">edit</button>
-                            <button class="btn btn-danger btn-sm ms-auto" data-modal-target="#modal-delete<?php= $row['id'] ?>">Delete</button>
-                          </td>
+                          $query = "SELECT * FROM karyawan";
+                          $result = mysqli_query($koneksi, $query);
+                          while ($row = mysqli_fetch_array($result)) {
+                            $userName = $row['nama'];
+                            $tgl = $row['tgl_masuk'];
+                            $userEmail = $row['email'];
+                            $nohp = $row['nohp'];
+                            $foto = $row['foto'];
+
+
+                          ?>
+                            <td><?php echo $userName; ?></td>
+                            <td>
+
+                              <span class="avatar avatar-sm mt-2">
+                                <img src="./foto/user/<?php echo $foto; ?>" alt="..." class="avatar-img rounded-circle">
+                              </span>
+
+                            </td>
+                            <td><?php echo $tgl; ?></td>
+                            <td><?php echo $userEmail; ?></td>
+                            <td><?php echo $nohp; ?></td>
+
+                            <td>
+                              <button class="btn btn-primary btn-sm ms-auto" data-modal-target="#modal-edit<?php $row['id'] ?>">Edit</button>
+                              <button type="button" class="btn btn-danger btn-sm ms-auto" data-toggle="modal" data-target=".modal-delete" data-modal-target="#modal-delete<?php $row['id'] ?>">Delete</button>
+                            </td>
 
                         </tr>
-                        <?php
-                                        }
-                                         ?>
+                      <?php
+                          }
+                      ?>
 
 
 
@@ -347,72 +380,36 @@ error_reporting(1);
           </div> <!-- .col-12 -->
         </div> <!-- .row -->
       </div> <!-- .container-fluid -->
-      <!-- POP UP EDIT -->
-            <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog"
-              aria-labelledby="defaultModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
-                <div class="modal-content"><br>
-                    
-                  <div class="modal-header">
-                    
-                    <h5 class="modal-title" id="defaultModalLabel">Add Karyawan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body-add">
-                    <form action="editkaryawan.php" method="post" enctype="multipart/form-data">
 
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Nama</label>
-                        <input class="form-control" id="nama" type="text" value="" placeholder="Enter Name"
-                          maxlength="30" name="txt_nama" id="txt_nama" required />
+      <!-- Pop Up Delete -->
+      <div class="modal-delete" id="modal-delete<?= $row['id'] ?>">
+                          <div class="modal-header-delete">
+                            <h2 class="delete">Warning</h2>
+                            <!-- <button data-close-delete class="close-btn-delete">&times;</button> -->
 
-                      </div>
-                      <div class="mb-3">
-                       <label for="formFile" class="form-label">Default file input example</label>
-                         <input class="form-control" type="file" id="formFile" name="foto">
-                             </div>
-                       
-                                             <div class="form-group mb-3">
-                        <label for="example-date">Tanggal Masuk</label>
-                        <input class="form-control" id="example-date" type="date" name="txt_tgl">
-                      </div>
-                      <div class="form-group">
-                <label for="example-text-input" class="form-control-label">Email</label>
-                <input class="form-control" id="email" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_mail" id="txt_mail" required />
+                            <div class="modal-body-delete">
+                              <div class="row">
 
-              </div>  
+                                <p class="delete">
+                                  Yakin dek mau ngehapus data orang? dosah loh dek
+                                </p>
 
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">No Hp</label>
-                        <input class="form-control" id="nohp" type="text" value="" placeholder="Enter No Hp"
-                          oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');"
-                          maxlength="12" name="txt_nohp" id="txt_nohp" required />
-
-                      </div>
+                              </div>
+                              <div></div>
+                              <div></div>
+                              <form class="yayyay" action="hapus_karyawan.php" method="post">
+                                <div class="align-middle text-center">
+                                  <a class="btn btn-danger btn-sm ms-auto" href="hapus_user.php?id=<?php echo $row['id']; ?>">Delete</a>
+                                  <button class="btn btn-success btn-sm ms-auto" name="submit" data-close-delete>Close</button>
+                                  <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_user.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                              </form>
+                            </div>
 
 
-                      <div class="form-group">
-                <label for="example-text-input" class="form-control-label">Alamat</label>
-                <input class="form-control" id="username" type="text" value="" placeholder="Enter Username" maxlength="30" name="txt_alamat" id="txt_user" required />
-
-              </div>
-
-
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn mb-2 btn-primary">Add User</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-      <!-- END POP UP EDIT -->
-      
-      <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
-        aria-hidden="true">
+                          </div>
+                        </div>
+      <!-- End Pop Up Delete -->
+      <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -479,8 +476,7 @@ error_reporting(1);
           </div>
         </div>
       </div>
-      <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
-        aria-hidden="true">
+      <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -550,7 +546,7 @@ error_reporting(1);
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('#tableku').DataTable();
     });
   </script>
@@ -559,3 +555,4 @@ error_reporting(1);
 </body>
 
 </html>
+<?php
