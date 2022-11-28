@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     } else {
         header("location: karyawan.php");
     }
-} elseif (isset($_POST['submit'])) {
+} elseif (isset($_POST['submit-delete'])) {
     header("location: karyawan.php");
 } else {
     header("location: karyawan.php");
