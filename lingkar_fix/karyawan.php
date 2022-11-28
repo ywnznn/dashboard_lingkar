@@ -26,6 +26,7 @@ error_reporting(1);
   <!-- App CSS -->
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 </head>
 
 <body class="vertical  dark  ">
@@ -234,7 +235,7 @@ error_reporting(1);
                     </button>
                   </div>
                   <div class="modal-body-add">
-                    <form action="karyawan.php" method="post" enctype="multipart/form-data">
+                    <form action="./addkaryawan.php" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Nama</label>
@@ -243,17 +244,17 @@ error_reporting(1);
 
                       </div>
                       <div class="mb-3">
-                       <label for="formFile" class="form-label">Default file input example</label>
-                         <input class="form-control" type="file" id="formFile" name="foto">
-                             </div>
+                      <label for="formFile" class="form-label">Default file input example</label>
+                       <input class="form-control" type="file" id="foto" name="foto">
+                       </div>
                        
                                              <div class="form-group mb-3">
                         <label for="example-date">Tanggal Masuk</label>
-                        <input class="form-control" id="example-date" type="date" name="txt_tgl">
+                        <input class="form-control" id="example-date" type="date" name="txt_tgl" id="txt_tgl">
                       </div>
                       <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Email</label>
-                <input class="form-control" id="email" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_mail" id="txt_mail" required />
+                <input class="form-control" id="email" type="text" value="" placeholder="Enter Email" maxlength="30" name="txt_mail" id="txt_mail" required />
 
               </div>  
 
@@ -268,17 +269,18 @@ error_reporting(1);
 
                       <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Alamat</label>
-                <input class="form-control" id="username" type="text" value="" placeholder="Enter Username" maxlength="30" name="txt_alamat" id="txt_user" required />
+                <input class="form-control" id="username" type="text" value="" placeholder="Enter Username" maxlength="30" name="txt_alamat" id="txt_alamat" required />
 
               </div>
 
 
-                    </form>
+                    
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn mb-2 btn-primary">Add User</button>
+                    <button type="button" class="btn mb-2 btn-primary" id="add-user" name="add-user">Add User</button>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -557,41 +559,3 @@ error_reporting(1);
 </body>
 
 </html>
-<?php
-
-require('./config.php');
-// session_start();
-error_reporting(1);
-if (isset($_POST['add-user'])) {
-  $userNama = $_POST['txt_nama'];
-  $userNoHp = $_POST['txt_nohp'];
-  $userMail = $_POST['txt_mail'];
-  $tglmasuk = $_POST['txt_tgl'];
-  $alamat = $_POST['txt_alamat'];
-  
-
-  $foto = $_FILES['foto']['name'];
-  $file_tmp = $_FILES['foto']['tmp_name'];
-  move_uploaded_file($file_tmp, '../foto/user/' . $foto);
-
-  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp', email = '$userMail', tgl_masuk = '$tglmasuk', alamat = '$alamat'";
-  $result   = mysqli_query($koneksi, $query);
-
-
-  if ($result) {
-    echo "<script>
-		Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
-		}).then((result) => {if (result.value)
-			{window.location = '';}
-		})</script>";
-  } else {
-
-    echo "<script>
-			Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
-			}).then((result) => {if (result.value)
-				{window.location = '';}
-			})</script>";
-  }
-}
-
-?>

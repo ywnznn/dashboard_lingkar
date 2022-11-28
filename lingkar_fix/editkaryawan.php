@@ -17,3 +17,4 @@ if (isset($_POST['submit'])) {
 } elseif (isset($_POST['close'])) {
     header("location: karyawan.php");
 }
+?>
