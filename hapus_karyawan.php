@@ -1,7 +1,7 @@
 <?php
 require("./config.php");
 if (isset($_GET['id'])) {
-    $sql_hapus = "delete from karyawan where id='" . $_GET['id'] . "'";
+    $sql_hapus = "DELETE FROM karyawan where id='" . $_GET['id'] . "'";
     $query_hapus = mysqli_query($koneksi, $sql_hapus);
 
 
