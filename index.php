@@ -142,41 +142,37 @@ require ("./config.php");
           <li class="nav-item dropdown">
             <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
               <i class="fe fe-grid fe-16"></i>
-              <span class="ml-3 item-text">Tables</span>
+              <span class="ml-3 item-text">Barang</span>
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="tables">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Basic Tables</span></a>
+                <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Barang Masuk</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./table_advanced.html"><span class="ml-1 item-text">Advanced
-                    Tables</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link pl-3" href="./table_datatables.html"><span class="ml-1 item-text">Data
-                    Tables</span></a>
+                <a class="nav-link pl-3" href="./table_advanced.html"><span class="ml-1 item-text">Barang Keluar</span></a>
               </li>
             </ul>
           </li>
           <li class="nav-item dropdown">
+              <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-book fe-16"></i>
+                <span class="ml-3 item-text">Income</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="contact">
+                <a class="nav-link pl-3" href="./contacts-list.html"><span class="ml-1">Penghasilan Perhari</span></a>
+                <a class="nav-link pl-3" href="./contacts-grid.html"><span class="ml-1">Penghasilan Perbulan</span></a>
+              </ul>
+            </li>
+          <li class="nav-item dropdown">
             <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
               <i class="fe fe-pie-chart fe-16"></i>
-              <span class="ml-3 item-text">Charts</span>
+              <span class="ml-3 item-text">Absen</span>
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="charts">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./chart-inline.html"><span class="ml-1 item-text">Inline Chart</span></a>
+                <a class="nav-link pl-3" href="./chart-inline.html"><span class="ml-1 item-text">Karyawan</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link pl-3" href="./chart-chartjs.html"><span class="ml-1 item-text">Chartjs</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link pl-3" href="./chart-apexcharts.html"><span
-                    class="ml-1 item-text">ApexCharts</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link pl-3" href="./datamaps.html"><span class="ml-1 item-text">Datamaps</span></a>
-              </li>
+              
             </ul>
             <p class="text-muted nav-heading mt-4 mb-1">
               <span> LANDING PAGE</span>
