@@ -5,20 +5,20 @@ session_start();
 
 
 
-  // if ($result) {
-  //   echo "<script>
-  // 	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
-  // 	}).then((result) => {if (result.value)
-  // 		{window.location = '';}
-  // 	})</script>";
-  // } else {
+// if ($result) {
+//   echo "<script>
+// 	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
+// 	}).then((result) => {if (result.value)
+// 		{window.location = '';}
+// 	})</script>";
+// } else {
 
-  //   echo "<script>
-  // 		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
-  // 		}).then((result) => {if (result.value)
-  // 			{window.location = '';}
-  // 		})</script>";
-  // }
+//   echo "<script>
+// 		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
+// 		}).then((result) => {if (result.value)
+// 			{window.location = '';}
+// 		})</script>";
+// }
 
 
 ?>
@@ -234,7 +234,9 @@ session_start();
           <div class="col-12">
             <h2 class="mb-2 page-title">Data table</h2>
             <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
-  <!-- Pop up Add Karyawan -->
+
+
+            <!-- Pop up Add Karyawan -->
             <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Karyawan</button>
 
             <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -295,6 +297,10 @@ session_start();
 
             </div>
             <!-- End Pop Up -->
+
+
+
+
             <div class="row my-4">
               <!-- Small table -->
               <div class="col-md-12">
@@ -369,7 +375,7 @@ session_start();
                                   <div class="form-group mb-3">
                                     <label for="customFile">Photo</label>
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile" name="foto" value="<?php echo $foto; ?>">
+                                      <input type="file" class="custom-file-input" id="customFile" name="fotoedit" value="<?php echo $foto; ?>">
                                       <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                   </div>
@@ -397,7 +403,7 @@ session_start();
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                                  <button class="btn mb-2 btn-primary" name="edit">Edit</button>
+                                  <button class="btn mb-2 btn-primary" type="submit" name="submit">Edit</button>
                                 </div>
                               </form>
 
@@ -406,38 +412,44 @@ session_start();
                         </div>
 
                         <!-- End Pop Up Edit -->
+
+
+
                         <!-- Pop Up Delete -->
-      <div class="modal fade" id="verticalModal<?= $row['id'] ?>" tabindex="-1" role="dialog"
-        aria-labelledby="verticalModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="verticalModalTitle">Warning!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form action="karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
-              <div class="modal-body">
-                <div class="row">
+                        <div class="modal fade" id="verticalModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="verticalModalTitle">Warning!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form action="karyawan.php?id=<?= $row['id'] ?>" method="post">
+                                <div class="modal-body">
+                                  <div class="row">
 
-                  Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['nama'] ?>
-                  <br>
-                  <br>
+                                    Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['nama'] ?>
+                                    <br>
+                                    <br>
 
-                </div>
+                                  </div>
 
-                <div class="modal-footer">
-                  <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>">Delete</button>
-                  <button class="btn btn-success btn-sm ms-auto" name="submit-delete" data-close-delete>Close</button>
-                  <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
-                </div>
-            </form>
-          </div>
-        </div>
-      </div>
+                                  <div class="modal-footer">
 
-      <!-- End Pop Up Delete -->
+
+                                    <!-- <a href="karyawan.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
+
+                                    <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
+                                    <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
+                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- End Pop Up Delete -->
                       <?php
                           }
                       ?>
@@ -657,66 +669,59 @@ $enama = $_POST['nama'];
 $etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
 $eemail = $_POST['email'];
 $enohp = $_POST['nohp'];
-$efoto = $_FILES['foto']['name'];
-$file_tmp = $_FILES['foto']['tmp_name'];
+$efoto = $_FILES['fotoedit']['name'];
+$file_tmp = $_FILES['fotoedit']['tmp_name'];
 move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
 
 
-if (isset($_POST['edit'])) {
-    if (isset($_POST['edit'])) {
-        if (empty ($foto) == "") {
-            $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama',nohp='$enohp',email='$eemail',tgl_masuk='$etglmasuk' WHERE id='$eid'");
-            echo "<script>
+if (isset($_POST['submit'])) {
+  if (isset($_POST['submit'])) {
+    if ($efoto == "") {
+      $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama',nohp='$enohp',email='$eemail',tgl_masuk='$etglmasuk' WHERE id='$eid'");
+      echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'karyawan.php';}
             })</script>";
-        } else {
-            $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama', foto='$efoto', nohp='$enohp',email='$eemail', tgl_masuk='$etglmasuk' WHERE id='$eid'");
-            echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'karyawan.php';}
-            })</script>";
-        }
     } else {
-        echo "<script>
+      $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama', foto='$efoto', nohp='$enohp',email='$eemail', tgl_masuk='$etglmasuk' WHERE id='$eid'");
+      echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'karyawan.php';}
             })</script>";
     }
-}  else {
-    header ("location: karyawan.php");
-}
-// ?>
-
-<!-- Syntax Delete -->
-<?php
-require("./config.php");
-if (isset($_GET['id'])) {
-    $sql_hapus = "DELETE FROM karyawan where id='" . $_GET['id'] . "'";
-    $query_hapus = mysqli_query($koneksi, $sql_hapus);
-
-
-    if ($query) {
-    echo "<script>
-  	Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
-  	}).then((result) => {if (result.value)
-  		{window.location = 'karyawan.php';}
-  	})</script>";
   } else {
-
     echo "<script>
-  		Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
-  		}).then((result) => {if (result.value)
-  			{window.location = 'karyawan.php';}
-  		})</script>";
+            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            }).then((result) => {if (result.value)
+                {window.location = 'karyawan.php';}
+            })</script>";
   }
-} elseif (isset($_POST['submit-delete'])) {
-    header("location: karyawan.php");
-} else {
-    header("location: karyawan.php");
+}
+
+
+
+error_reporting(0);
+
+$did = $_GET['id'];
+if (isset($_POST['delete'])) {
+
+  $querydel = "DELETE FROM karyawan WHERE id = '$did'";
+  $result = mysqli_query($koneksi, $querydel);
+
+  if ($result) {
+    echo "<script>
+    Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
+    }).then((result) => {if (result.value)
+        {window.location = 'karyawan.php';}
+    })</script>";
+  } else {
+    echo "<script>
+    Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
+    }).then((result) => {if (result.value)
+        {window.location = 'karyawan.php';}
+    })</script>";
+  }
 }
 ?>
-<!-- End Syntax Delete -->
