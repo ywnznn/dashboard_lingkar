@@ -357,7 +357,7 @@ session_start();
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="edit_karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
+                              <form action="karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
                                 <div class="modal-body-add">
 
 
@@ -369,7 +369,7 @@ session_start();
                                   <div class="form-group mb-3">
                                     <label for="customFile">Photo</label>
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile" name="foto">
+                                      <input type="file" class="custom-file-input" id="customFile" name="foto" value="<?php echo $foto; ?>">
                                       <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                   </div>
@@ -417,7 +417,7 @@ session_start();
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="hapus_karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
+            <form action="karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
               <div class="modal-body">
                 <div class="row">
 
@@ -603,6 +603,9 @@ session_start();
 </body>
 
 </html>
+
+<!-- Syntax Add Karyawan -->
+
 <?php
 error_reporting(0);
 if (isset($_POST['add-user'])) {
@@ -610,7 +613,7 @@ if (isset($_POST['add-user'])) {
   $userNoHp = $_POST['txt_nohp'];
   $userMail = $_POST['txt_email'];
   $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
-  $userAlamat = $_POST['txt_alamat'];
+  // $userAlamat = $_POST['txt_alamat'];
 
 
   $foto = $_FILES['foto']['name'];
@@ -641,3 +644,79 @@ if (isset($_POST['add-user'])) {
 }
 
 ?>
+
+<!-- END Add Karyawan -->
+
+
+<!-- Syntax Edit Karyawan -->
+<?php
+require('config.php');
+// error_reporting(1);
+$eid = $_GET['id'];
+$enama = $_POST['nama'];
+$etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
+$eemail = $_POST['email'];
+$enohp = $_POST['nohp'];
+$efoto = $_FILES['foto']['name'];
+$file_tmp = $_FILES['foto']['tmp_name'];
+move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
+
+
+if (isset($_POST['edit'])) {
+    if (isset($_POST['edit'])) {
+        if (empty ($foto) == "") {
+            $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama',nohp='$enohp',email='$eemail',tgl_masuk='$etglmasuk' WHERE id='$eid'");
+            echo "<script>
+            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            }).then((result) => {if (result.value)
+                {window.location = 'karyawan.php';}
+            })</script>";
+        } else {
+            $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama', foto='$efoto', nohp='$enohp',email='$eemail', tgl_masuk='$etglmasuk' WHERE id='$eid'");
+            echo "<script>
+            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            }).then((result) => {if (result.value)
+                {window.location = 'karyawan.php';}
+            })</script>";
+        }
+    } else {
+        echo "<script>
+            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            }).then((result) => {if (result.value)
+                {window.location = 'karyawan.php';}
+            })</script>";
+    }
+}  else {
+    header ("location: karyawan.php");
+}
+// ?>
+
+<!-- Syntax Delete -->
+<?php
+require("./config.php");
+if (isset($_GET['id'])) {
+    $sql_hapus = "DELETE FROM karyawan where id='" . $_GET['id'] . "'";
+    $query_hapus = mysqli_query($koneksi, $sql_hapus);
+
+
+    if ($query) {
+    echo "<script>
+  	Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
+  	}).then((result) => {if (result.value)
+  		{window.location = 'karyawan.php';}
+  	})</script>";
+  } else {
+
+    echo "<script>
+  		Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
+  		}).then((result) => {if (result.value)
+  			{window.location = 'karyawan.php';}
+  		})</script>";
+  }
+} elseif (isset($_POST['submit-delete'])) {
+    header("location: karyawan.php");
+} else {
+    header("location: karyawan.php");
+}
+?>
+<!-- End Syntax Delete -->

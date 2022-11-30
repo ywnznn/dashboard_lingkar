@@ -42,4 +42,6 @@ if (isset($_POST['edit'])) {
                 {window.location = 'karyawan.php';}
             })</script>";
     }
+} else {
+    header ("location: karyawan.php");
 }
