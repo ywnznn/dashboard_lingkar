@@ -632,7 +632,7 @@ if (isset($_POST['add-user'])) {
   $file_tmp = $_FILES['foto']['tmp_name'];
   move_uploaded_file($file_tmp, './foto/user/' . $foto);
 
-  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp',  tgl_masuk = '$tglmasuk',  email = '$userMail', alamat = '$userAlamat'";
+  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp',  tgl_masuk = '$tglmasuk',  email = '$userMail'";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
