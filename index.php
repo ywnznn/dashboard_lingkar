@@ -146,10 +146,10 @@ require ("./config.php");
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="tables">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Barang Masuk</span></a>
+                <a class="nav-link pl-3" href="./barang_in.php"><span class="ml-1 item-text">Barang Masuk</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./table_advanced.html"><span class="ml-1 item-text">Barang Keluar</span></a>
+                <a class="nav-link pl-3" href="./barang_out.php"><span class="ml-1 item-text">Barang Keluar</span></a>
               </li>
             </ul>
           </li>
@@ -159,8 +159,8 @@ require ("./config.php");
                 <span class="ml-3 item-text">Income</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-                <a class="nav-link pl-3" href="./contacts-list.html"><span class="ml-1">Penghasilan Perhari</span></a>
-                <a class="nav-link pl-3" href="./contacts-grid.html"><span class="ml-1">Penghasilan Perbulan</span></a>
+                <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
+                <a class="nav-link pl-3" href="./income_bulanan.php"><span class="ml-1">Penghasilan Perbulan</span></a>
               </ul>
             </li>
           <li class="nav-item dropdown">
@@ -170,7 +170,7 @@ require ("./config.php");
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="charts">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./chart-inline.html"><span class="ml-1 item-text">Karyawan</span></a>
+                <a class="nav-link pl-3" href="./absen.php"><span class="ml-1 item-text">Karyawan</span></a>
               </li>
               
             </ul>

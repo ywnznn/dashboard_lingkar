@@ -5,20 +5,20 @@ session_start();
 
 
 
-  // if ($result) {
-  //   echo "<script>
-  // 	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
-  // 	}).then((result) => {if (result.value)
-  // 		{window.location = '';}
-  // 	})</script>";
-  // } else {
+// if ($result) {
+//   echo "<script>
+// 	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
+// 	}).then((result) => {if (result.value)
+// 		{window.location = '';}
+// 	})</script>";
+// } else {
 
-  //   echo "<script>
-  // 		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
-  // 		}).then((result) => {if (result.value)
-  // 			{window.location = '';}
-  // 		})</script>";
-  // }
+//   echo "<script>
+// 		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
+// 		}).then((result) => {if (result.value)
+// 			{window.location = '';}
+// 		})</script>";
+// }
 
 
 ?>
@@ -232,10 +232,12 @@ session_start();
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="mb-2 page-title">Data table</h2>
-            <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
-  <!-- Pop up Add Karyawan -->
-            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Karyawan</button>
+            <h2 class="mb-2 page-title">Data User</h2>
+            <p class="card-text">Ini adalah data Administrator yang mempunyai akses ke dashboard  lingkar angkringan dan cafe</p>
+
+
+            <!-- Pop up Add User -->
+            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add User</button>
 
             <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
@@ -243,17 +245,17 @@ session_start();
 
                   <div class="modal-header">
 
-                    <h5 class="modal-title" id="defaultModalLabel">Add Karyawan</h5>
+                    <h5 class="modal-title" id="defaultModalLabel">Add User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="karyawan.php" method="post" enctype="multipart/form-data">
+                  <form action="user.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body-add">
 
 
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Username</label>
+                        <label for="example-text-input" class="form-control-label">Usernama</label>
                         <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="txt_nama" required />
 
                       </div>
@@ -264,20 +266,23 @@ session_start();
                           <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Email</label>
+                        <input class="form-control" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_email" required />
+
+                      </div>
+                      
 
                       <div class="form-group">
                         <label for="example-text-input" class="form-control-label">No Hp</label>
                         <input class="form-control" name="txt_nohp" type="text" value="" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" required />
 
                       </div>
-
-
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Email</label>
-                        <input class="form-control" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_email" required />
+                        <label for="example-text-input" class="form-control-label">Password</label>
+                        <input class="form-control" type="password" value="" placeholder="Enter Password" minlength="6" maxlength="30" name="txt_pass" required />
 
                       </div>
-
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
@@ -290,6 +295,10 @@ session_start();
 
             </div>
             <!-- End Pop Up -->
+
+
+
+
             <div class="row my-4">
               <!-- Small table -->
               <div class="col-md-12">
@@ -297,29 +306,33 @@ session_start();
                   <div class="card-body">
                     <!-- table -->
                     <table id="tableku" class="table datatables">
-                      <thead>
+                       <thead>
                         <tr>
-                          <th>ID</th>
+                          <th>NO</th>
                           <th>Username</th>
-                          <th>Photo Profile</th>
+                          <th>Photo profile</th>
                           <th>Email</th>
+                          <th>Phone</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <?php
-                          $query = "SELECT * FROM User";
+                          $query = "SELECT * FROM user";
                           $result = mysqli_query($koneksi, $query);
+                          $noUrut = 0;
                           while ($row = mysqli_fetch_array($result)) {
-                            $userid = $row['id'];
                             $userName = $row['username'];
                             $userEmail = $row['email'];
+                            $nohp = $row['nohp'];
                             $foto = $row['foto'];
+                            $password = $row['password'];
 
-
+$noUrut++;
                           ?>
-                          <td><?php $userid; ?></td>
+                          
+                          <td><?php echo $noUrut; ?></td>
                             <td><?php echo $userName; ?></td>
                             <td>
 
@@ -328,9 +341,8 @@ session_start();
                               </span>
 
                             </td>
-                            
                             <td><?php echo $userEmail; ?></td>
-                            
+                            <td><?php echo $nohp; ?></td>
 
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
@@ -346,52 +358,47 @@ session_start();
 
                               <div class="modal-header">
 
-                                <h5 class="modal-title" id="defaultModalLabel">Edit Karyawan</h5>
+                                <h5 class="modal-title" id="defaultModalLabel">Edit User</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="edit_karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
+                              <form action="user.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
                                 <div class="modal-body-add">
 
 
                                   <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama</label>
-                                    <input class="form-control" type="text" value="<?php echo $userName; ?>" placeholder="Enter Name" maxlength="30" name="nama" required />
+                                    <label for="example-text-input" class="form-control-label">Usernama</label>
+                                    <input class="form-control" type="text" value="<?php echo $userName; ?>" placeholder="Enter Name" maxlength="30" name="username" required />
 
                                   </div>
                                   <div class="form-group mb-3">
                                     <label for="customFile">Photo</label>
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile" name="foto">
+                                      <input type="file" class="custom-file-input" id="customFile" name="fotoedit" value="<?php echo $foto; ?>">
                                       <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                   </div>
-
-
-
-                                  <div class="form-group mb-3">
-                                    <label for="example-date">Tanggal Masuk</label>
-                                    <input class="form-control" id="example-date" type="date" value="<?php echo $tgl; ?>" name="tgl_masuk">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">No Hp</label>
-                                    <input class="form-control" name="nohp" type="text" value="<?php echo $nohp; ?>" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" />
-
-                                  </div>
-
 
                                   <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Email</label>
                                     <input class="form-control" type="email" value="<?php echo $userEmail; ?>" placeholder="Enter Email" maxlength="30" name="email" />
 
                                   </div>
+                                  <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">No Hp</label>
+                                    <input class="form-control" name="nohp" type="text" value="<?php echo $nohp; ?>" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" />
 
+                                  </div>
+                                 <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Passwod</label>
+                                    <input class="form-control" type="password " value="<?php echo $password; ?>" placeholder="Enter password" maxlength="30" name="pass" />
+
+                                  </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                                  <button class="btn mb-2 btn-primary" name="edit">Edit</button>
+                                  <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" >Close</button>
+                                  <button class="btn mb-2 btn-primary" type="submit" name="submit">Edit</button>
                                 </div>
                               </form>
 
@@ -400,38 +407,40 @@ session_start();
                         </div>
 
                         <!-- End Pop Up Edit -->
+
+
+
                         <!-- Pop Up Delete -->
-      <div class="modal fade" id="verticalModal<?= $row['id'] ?>" tabindex="-1" role="dialog"
-        aria-labelledby="verticalModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="verticalModalTitle">Warning!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form action="hapus_karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
-              <div class="modal-body">
-                <div class="row">
+                        <div class="modal fade" id="verticalModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="verticalModalTitle">Warning!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form action="user.php?id=<?= $row['id'] ?>" method="post">
+                                <div class="modal-body">
+                                  <div class="row">
 
-                  Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['nama'] ?>
-                  <br>
-                  <br>
+                                    Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['username'] ?>
+                                    <br>
+                                    <br>
 
-                </div>
+                                  </div>
 
-                <div class="modal-footer">
-                  <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>">Delete</button>
-                  <button class="btn btn-success btn-sm ms-auto" name="submit-delete" data-close-delete>Close</button>
-                  <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
-                </div>
-            </form>
-          </div>
-        </div>
-      </div>
+                                  <div class="modal-footer">
 
-      <!-- End Pop Up Delete -->
+                                    <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
+                                    <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- End Pop Up Delete -->
                       <?php
                           }
                       ?>
@@ -597,41 +606,111 @@ session_start();
 </body>
 
 </html>
+
+<!-- Syntax Add User -->
+
 <?php
 error_reporting(0);
 if (isset($_POST['add-user'])) {
   $userNama = $_POST['txt_nama'];
   $userNoHp = $_POST['txt_nohp'];
   $userMail = $_POST['txt_email'];
-  $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
-  $userAlamat = $_POST['txt_alamat'];
+  $userPass = $_POST['txt_pass'];
+  // $userAlamat = $_POST['txt_alamat'];
 
 
   $foto = $_FILES['foto']['name'];
   $file_tmp = $_FILES['foto']['tmp_name'];
   move_uploaded_file($file_tmp, './foto/user/' . $foto);
 
-  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp',  tgl_masuk = '$tglmasuk',  email = '$userMail', alamat = '$userAlamat'";
+  $query    = "INSERT INTO user SET username = '$userNama', foto = '$foto', nohp = '$userNoHp',  email = '$userMail', password = '$userPass'";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
     echo "<script>
   	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
   	}).then((result) => {if (result.value)
-  		{window.location = 'karyawan.php';}
+  		{window.location = 'user.php';}
   	})</script>";
   } else {
 
     echo "<script>
   		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
   		}).then((result) => {if (result.value)
-  			{window.location = 'karyawan.php';}
+  			{window.location = 'user.php';}
   		})</script>";
   }
-  // if($query)
-  // {
-  //   header("location:karyawan.php");
-  // }
+ 
 }
 
+?>
+
+<!-- END Add User -->
+
+
+<!-- Syntax Edit User -->
+<?php
+require('config.php');
+// error_reporting(1);
+$eid = $_GET['id'];
+$enama = $_POST['username'];
+// $etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
+$eemail = $_POST['email'];
+$enohp = $_POST['nohp'];
+$epass = $_POST['password'];
+$efoto = $_FILES['fotoedit']['name'];
+$file_tmp = $_FILES['fotoedit']['tmp_name'];
+move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
+
+
+if (isset($_POST['submit'])) {
+  if (isset($_POST['submit'])) {
+    if ($efoto == "") {
+      $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama',nohp='$enohp',email='$eemail', password ='$epass' WHERE id='$eid'");
+      echo "<script>
+            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            }).then((result) => {if (result.value)
+                {window.location = 'user.php';}
+            })</script>";
+    } else {
+      $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama', foto='$efoto', nohp='$enohp',email='$eemail', password ='$epass' WHERE id='$eid'");
+      echo "<script>
+            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            }).then((result) => {if (result.value)
+                {window.location = 'user.php';}
+            })</script>";
+    }
+  } else {
+    echo "<script>
+            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            }).then((result) => {if (result.value)
+                {window.location = 'user.php';}
+            })</script>";
+  }
+}
+
+
+
+error_reporting(0);
+
+$did = $_GET['id'];
+if (isset($_POST['delete'])) {
+
+  $querydel = "DELETE FROM user WHERE id = '$did'";
+  $result = mysqli_query($koneksi, $querydel);
+
+  if ($result) {
+    echo "<script>
+    Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
+    }).then((result) => {if (result.value)
+        {window.location = 'user.php';}
+    })</script>";
+  } else {
+    echo "<script>
+    Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
+    }).then((result) => {if (result.value)
+        {window.location = 'user.php';}
+    })</script>";
+  }
+}
 ?>
