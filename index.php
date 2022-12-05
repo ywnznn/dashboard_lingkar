@@ -1,5 +1,10 @@
 <?php
 require ("./config.php");
+session_start();
+if( !isset($_SESSION["login"])){
+  header("location: login.php");
+  exit;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -207,7 +212,7 @@ require ("./config.php");
               </li>
             </ul>
           <li class="nav-item w-100">
-            <a class="nav-link" href="login.php">
+            <a class="nav-link" href="logout.php">
               <i class="fe fe-power"></i>
               <span class="ml-3 item-text">Log Out</span>
             </a>
