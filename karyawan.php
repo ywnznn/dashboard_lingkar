@@ -1,26 +1,10 @@
 <?php
-
-require('./config.php');
+require ("./config.php");
 session_start();
-
-
-
-// if ($result) {
-//   echo "<script>
-// 	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
-// 	}).then((result) => {if (result.value)
-// 		{window.location = '';}
-// 	})</script>";
-// } else {
-
-//   echo "<script>
-// 		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
-// 		}).then((result) => {if (result.value)
-// 			{window.location = '';}
-// 		})</script>";
-// }
-
-
+if( !isset($_SESSION["login"])){
+  header("location: login.php");
+  exit;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -31,18 +15,19 @@ session_start();
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
-  <title>Lingkar Angkringan</title>
+  <title>Dashboard Lingkar Cafe</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
   <!-- Fonts CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <!-- Icons CSS -->
   <link rel="stylesheet" href="css/feather.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
   <!-- Date Range Picker CSS -->
   <link rel="stylesheet" href="css/daterangepicker.css">
   <!-- App CSS -->
-  <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
+  <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 </head>
 
@@ -53,14 +38,21 @@ session_start();
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
       <form class="form-inline mr-auto searchform text-muted">
-        <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
+        <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search"
+          placeholder="Type something..." aria-label="Search">
       </form>
       <ul class="nav">
+
+
+
         <li class="nav-item">
-          <a class="nav-link text-muted my-2" href="./index.php" id="modeSwitcher" data-mode="dark">
-            <i class="fe fe-sun fe-16"></i>
-          </a>
-        </li>
+            <a class="nav-link text-muted my-2" href="./index.php" id="modeSwitcher" data-mode="dark">
+              <i class="fe fe-sun fe-16"></i>
+            </a>
+          </li>
+
+
+
         <li class="nav-item">
           <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
             <span class="fe fe-grid fe-16"></span>
@@ -73,7 +65,8 @@ session_start();
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
               <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
             </span>
@@ -94,7 +87,8 @@ session_start();
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
           <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-            <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
+            <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
               <g>
                 <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
                 <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
@@ -218,7 +212,7 @@ session_start();
               </li>
             </ul>
           <li class="nav-item w-100">
-            <a class="nav-link" href="login.php">
+            <a class="nav-link" href="logout.php">
               <i class="fe fe-power"></i>
               <span class="ml-3 item-text">Log Out</span>
             </a>
