@@ -18,6 +18,8 @@ if( !isset($_SESSION["login"])){
   <title>Dashboard Lingkar Cafe</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
   <!-- Fonts CSS -->
   <link
     href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
@@ -606,9 +608,9 @@ $no++;
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
-    $(document).ready(function() {
-      $('#tableku').DataTable();
-    });
+    $(document).ready(function () {
+    $('#tableku').DataTable();
+});
   </script>
 
   <script src="js/apps.js"></script>
