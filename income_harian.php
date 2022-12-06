@@ -230,12 +230,12 @@ if( !isset($_SESSION["login"])){
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="mb-2 page-title">Data Karyawan</h2>
-            <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
+            <h2 class="mb-2 page-title">Data Income</h2>
+            <p class="card-text">Ini adalah data penghasilan harian di lingkar angkringan dan cafe</p>
 
 
             <!-- Pop up Add Karyawan -->
-            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target="#verticalModal">Add Karyawan</button>
+            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target="#verticalModal">Add Income</button>
 
              <div class="modal fade" id="verticalModal" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -248,7 +248,7 @@ if( !isset($_SESSION["login"])){
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="karyawan.php" method="post" enctype="multipart/form-data">
+                  <form action="income_harian.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body-add">
 
 
@@ -257,36 +257,23 @@ if( !isset($_SESSION["login"])){
                         <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="txt_nama" required />
 
                       </div>
-                      <div class="form-group mb-3">
-                        <label for="customFile">Photo</label>
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFile" name="foto">
-                          <label class="custom-file-label" for="customFile">Choose file</label>
-                        </div>
-                      </div>
 
                       <div class="form-group mb-3">
-                        <label for="example-date">Tanggal Masuk</label>
-                        <input class="form-control" id="example-date" type="date" name="txt_tgl_masuk">
+                        <label for="example-date">Tanggal penghasilan</label>
+                        <input class="form-control" id="example-date" type="date" name="txt_tgl_penghasilan">
                       </div>
 
+                      
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">No Hp</label>
-                        <input class="form-control" name="txt_nohp" type="text" value="" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" required />
-
-                      </div>
-
-
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Email</label>
-                        <input class="form-control" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_email" required />
+                        <label for="example-text-input" class="form-control-label">Jumlah</label>
+                        <input class="form-control" type="text" value="" placeholder="Enter Jumlah" maxlength="30" id="rupiah" name="txt_jumlah" required />
 
                       </div>
 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                      <button class="btn mb-2 btn-primary" type="submit" name="add-user">Add User</button>
+                      <button class="btn mb-2 btn-primary" type="submit" name="add-income">Add Penghasilan</button>
                     </div>
                   </form>
 
@@ -294,6 +281,7 @@ if( !isset($_SESSION["login"])){
               </div>
 
             </div>
+            
             <!-- End Pop Up Add Karyawan-->
 
 
@@ -310,40 +298,28 @@ if( !isset($_SESSION["login"])){
                         <tr>
                           <th>No</th>
                           <th>Nama</th>
-                          <th>Photo profile</th>
-                          <th>Tanggal Masuk</th>
-                          <th>Email</th>
-                          <th>Phone</th>
+                          <th>Tanggal tambah</th>
+                          <th>jumlah</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <?php
-                          $query = "SELECT * FROM karyawan";
+                          $query = "SELECT * FROM income";
                           $result = mysqli_query($koneksi, $query);
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
                             $userName = $row['nama'];
-                            $tgl = $row['tgl_masuk'];
-                            $userEmail = $row['email'];
-                            $nohp = $row['nohp'];
-                            $foto = $row['foto'];
-
+                            $tgl = $row['tgl_income'];
+                            $jumlah = $row['jumlah'];
 $no++;
                           ?>
                           <td><?php echo $no; ?></td>
                             <td><?php echo $userName; ?></td>
-                            <td>
-
-                              <span class="avatar avatar-sm mt-2">
-                                <img src="./foto/user/<?php echo $foto; ?>" alt="..." class="avatar-img rounded-circle">
-                              </span>
-
-                            </td>
                             <td><?php echo $tgl; ?></td>
-                            <td><?php echo $userEmail; ?></td>
-                            <td><?php echo $nohp; ?></td>
+                            <td><?php echo "Rp. ". number_format ($jumlah,2,',','.'); ?></td>
+                    
 
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
@@ -621,33 +597,25 @@ $no++;
 
 <?php
 error_reporting(0);
-if (isset($_POST['add-user'])) {
+if (isset($_POST['add-income'])) {
   $userNama = $_POST['txt_nama'];
-  $userNoHp = $_POST['txt_nohp'];
-  $userMail = $_POST['txt_email'];
-  $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
-  // $userAlamat = $_POST['txt_alamat'];
-
-
-  $foto = $_FILES['foto']['name'];
-  $file_tmp = $_FILES['foto']['tmp_name'];
-  move_uploaded_file($file_tmp, './foto/user/' . $foto);
-
-  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp',  tgl_masuk = '$tglmasuk',  email = '$userMail'";
+  $tglincome = date('Y-m-d', strtotime($_POST['txt_tgl_penghasilan']));
+  $jumlah = $_POST['txt_jumlah'];
+  $query    = "INSERT INTO income SET nama = '$userNama',  tgl_income = '$tglincome',  jumlah = '$jumlah'";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
     echo "<script>
   	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
   	}).then((result) => {if (result.value)
-  		{window.location = 'karyawan.php';}
+  		{window.location = 'income_harian.php';}
   	})</script>";
   } else {
 
     echo "<script>
   		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
   		}).then((result) => {if (result.value)
-  			{window.location = 'karyawan.php';}
+  			{window.location = 'income_harian.php';}
   		})</script>";
   }
   // if($query)
