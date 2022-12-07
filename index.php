@@ -5,6 +5,7 @@ if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -273,10 +274,32 @@ if( !isset($_SESSION["login"])){
                   <div class="card-body">
                     <div class="row align-items-center">
                       <div class="col">
-                        <small class="text-muted mb-1">Conversion</small>
-                        <h3 class="card-title mb-0">68</h3>
-                        <p class="small text-muted mb-0"><span
-                            class="fe fe-arrow-up fe-12 text-warning"></span><span>+1.9% Last week</span></p>
+                        <small class="text-muted mb-1">Total Pendapatan</small>
+                        <h3 class="card-title mb-0">
+                        
+                        <?php
+                        require ("./config.php");
+                          $query = "SELECT SUM(jumlah) AS total FROM income";
+                          $querysum = mysqli_query($koneksi,$query);
+
+                        while ($row = mysqli_fetch_array($querysum)) {
+                          $total = $row['total'];
+                          // echo '<h3> ' . $total . '</h3>';
+                        
+                        ?>
+                          <?php
+                          if ($total == '') {
+                            echo "<h3>Rp. 0</h3>";
+                          } else {
+                            echo "Rp. " . number_format($total, 2, ',', '.');
+                          }
+                          ?>
+                          <?php
+                        }
+                          ?>
+                    
+                        </h3>
+                        
                       </div>
                       <div class="col-4 text-right">
                         <span class="sparkline inlinepie"></span>
