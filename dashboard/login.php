@@ -4,7 +4,7 @@ require ('config.php');
 session_start();
 // LOGIN
 if( isset($_SESSION["login"])){
-  header("location: index.php");
+  header("location: dashboard.php");
   exit;
 }
 
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION["login"] = true;
-        header("Location: index.php");
+        header("Location: dashboard.php");
         exit;
     } else {
         echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
@@ -249,7 +249,7 @@ button{
 
 .img{
   overflow: hidden;
-  z-index: 2;
+  z-dashboard: 2;
   position: absolute;
   left: 0;
   top: 0;
@@ -287,7 +287,7 @@ button{
 }
 
 .img-text{
-  z-index: 2;
+  z-dashboard: 2;
   position: absolute;
   left: 0;
   top: 50px;
@@ -343,7 +343,7 @@ button{
 
 .img-btn{
   overflow: hidden;
-  z-index: 2;
+  z-dashboard: 2;
   position: relative;
   width: 100px;
   height: 36px;
@@ -357,7 +357,7 @@ button{
 
 .img-btn:after{
   content: '';
-  z-index: 2;
+  z-dashboard: 2;
   position: absolute;
   left: 0;
   top: 0;

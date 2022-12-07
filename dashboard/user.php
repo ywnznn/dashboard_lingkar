@@ -47,7 +47,7 @@ if( !isset($_SESSION["login"])){
 
 
         <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="./index.php" id="modeSwitcher" data-mode="dark">
+            <a class="nav-link text-muted my-2" href="./dashboard.php" id="modeSwitcher" data-mode="dark">
               <i class="fe fe-sun fe-16"></i>
             </a>
           </li>
@@ -87,7 +87,7 @@ if( !isset($_SESSION["login"])){
       <nav class="vertnav navbar navbar-light">
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
-          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./dashboard.html">
             <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
               <g>
@@ -101,7 +101,7 @@ if( !isset($_SESSION["login"])){
         <!-- SIDEBAR -->
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="dashboard.php">
               <br>
               <i class="fe fe-home fe-16"></i>
               <span class="ml-3 item-text">Dashboard</span>
@@ -236,7 +236,7 @@ if( !isset($_SESSION["login"])){
             <!-- Pop up Add User -->
             <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add User</button>
 
-            <div class="modal fade modal-right modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+            <div class="modal fade modal-right modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
                 <div class="modal-content"><br>
 
@@ -349,7 +349,7 @@ $noUrut++;
                         </tr>
                         <!-- Pop Up Edit -->
 
-                        <div class="modal fade modal-left modal-slide" id="modal-edit<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                        <div class="modal fade modal-left modal-slide" id="modal-edit<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
                             <div class="modal-content >"><br>
 
@@ -408,7 +408,7 @@ $noUrut++;
 
 
                         <!-- Pop Up Delete -->
-                        <div class="modal fade" id="verticalModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                        <div class="modal fade" id="verticalModal<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -455,7 +455,7 @@ $noUrut++;
           </div> <!-- .col-12 -->
         </div> <!-- .row -->
       </div> <!-- .container-fluid -->
-      <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+      <div class="modal fade modal-notif modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -485,7 +485,7 @@ $noUrut++;
                     </div>
                     <div class="col">
                       <small><strong>Widgets are updated successfull</strong></small>
-                      <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
+                      <div class="my-0 text-muted small">Just create new layout dashboard, form, table</div>
                       <small class="badge badge-pill badge-light text-muted">2m ago</small>
                     </div>
                   </div>
@@ -522,7 +522,7 @@ $noUrut++;
           </div>
         </div>
       </div>
-      <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+      <div class="modal fade modal-shortcut modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
