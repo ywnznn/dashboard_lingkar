@@ -24,6 +24,7 @@ if (isset($_POST['submit'])) {
     }
 }
  
+// REGISTER
 ?>
 <!DOCTYPE html>
 <html>
@@ -109,7 +110,8 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+  background-image: url(assets/images/bg2.jpg);
+  /* background: -webkit-linear-gradient(left, #7579ff, #b224ef); */
   font-family: 'Nunito', sans-serif;
 }
 
@@ -249,7 +251,7 @@ button{
 
 .img{
   overflow: hidden;
-  z-dashboard: 2;
+  z-index: 2;
   position: absolute;
   left: 0;
   top: 0;
@@ -287,7 +289,7 @@ button{
 }
 
 .img-text{
-  z-dashboard: 2;
+  z-index: 2;
   position: absolute;
   left: 0;
   top: 50px;
@@ -343,7 +345,7 @@ button{
 
 .img-btn{
   overflow: hidden;
-  z-dashboard: 2;
+  z-index: 2;
   position: relative;
   width: 100px;
   height: 36px;
@@ -357,7 +359,7 @@ button{
 
 .img-btn:after{
   content: '';
-  z-dashboard: 2;
+  z-index: 2;
   position: absolute;
   left: 0;
   top: 0;
