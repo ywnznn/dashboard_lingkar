@@ -265,7 +265,7 @@ if( !isset($_SESSION["login"])){
                         
                         <?php
                         require ("./config.php");
-                          $query = "SELECT SUM(jumlah) AS total FROM income";
+                          $query = "SELECT DISTINCT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(curdate()) AND YEAR(tgl_income)=YEAR(curdate())";
                           $querysum = mysqli_query($koneksi,$query);
 
                         while ($row = mysqli_fetch_array($querysum)) {
@@ -277,7 +277,7 @@ if( !isset($_SESSION["login"])){
                           if ($total == '') {
                             echo "<h3>Rp. 0</h3>";
                           } else {
-                            echo "Rp. " . number_format($total, 2, ',', '.');
+                            echo "Rp. " . number_format($total, 0, ',', '.');
                           }
                           ?>
                           <?php

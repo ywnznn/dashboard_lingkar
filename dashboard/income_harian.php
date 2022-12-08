@@ -304,7 +304,7 @@ $no++;
                           <td><?php echo $no; ?></td>
                             <td><?php echo $userName; ?></td>
                             <td><?php echo $tgl; ?></td>
-                            <td><?php echo "Rp. ". number_format ($jumlah,2,',','.'); ?></td>
+                            <td><?php echo "Rp. ". number_format ($jumlah,0,',','.'); ?></td>
                     
 
                             <td>
