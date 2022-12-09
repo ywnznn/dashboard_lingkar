@@ -1,5 +1,5 @@
 <?php
-require("config.php");
+require("dashboard/config.php");
 session_start();
 error_reporting(1);
 
@@ -884,5 +884,12 @@ if (isset($_POST['submit-reservation'])) {
   </body>
 </html>
 <?php
-requeire 
+require("dashboard/config.php");
+$querytambah = mysqli_query($koneksi, "SELECT * FROM stat");
+while($row = mysqli_fetch_assoc($querytambah)){
+    $current_count = $row['value'];
+    $new_count = $current_count;
+    $update_count = mysqli_query($koneksi, "INSERT INTO stat set value = '" . $new_count . "'");
+}
+
 ?>

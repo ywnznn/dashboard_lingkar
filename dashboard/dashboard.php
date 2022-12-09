@@ -233,7 +233,26 @@ if( !isset($_SESSION["login"])){
                     <div class="row align-items-center">
                       <div class="col">
                         <small class="text-muted mb-1">Page Views</small>
-                        <h3 class="card-title mb-0">1168</h3>
+                        <h3 class="card-title mb-0"><?php
+                        require ("./config.php");
+                          $query = "SELECT DISTINCT SUM(value) AS totalvisitor FROM stat WHERE DATE(date)=DATE(curdate())";
+                          $querysum = mysqli_query($koneksi,$query);
+
+                        while ($row = mysqli_fetch_array($querysum)) {
+                          $total = $row['totalvisitor'];
+                          // echo '<h3> ' . $total . '</h3>';
+                        
+                        ?>
+                          <?php
+                          if ($total == '') {
+                            echo "<h3>0</h3>";
+                          } else {
+                            echo number_format($total, 0, ',', '.');
+                          }
+                          ?>
+                          <?php
+                        }
+                          ?></h3>
                         <p class="small text-muted mb-0"><span
                             class="fe fe-arrow-down fe-12 text-danger"></span><span>-18.9% Last week</span></p>
                       </div>
