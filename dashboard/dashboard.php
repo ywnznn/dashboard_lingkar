@@ -4,6 +4,8 @@ session_start();
 if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
+} else {
+  $ssuser = $_SESSION["ssuser"];
 }
 
 ?>
@@ -51,19 +53,6 @@ if( !isset($_SESSION["login"])){
               <i class="fe fe-sun fe-16"></i>
             </a>
           </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="avatar avatar-sm mt-2">
-              <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-            </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Activities</a>
-          </div>
-        </li>
       </ul>
     </nav>
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
@@ -217,7 +206,7 @@ if( !isset($_SESSION["login"])){
           <div class="col-12">
             <div class="row align-items-center mb-2">
               <div class="col">
-                <h2 class="h5 page-title">Welcome!</h2>
+                <h2 class="h5 page-title">Welcome <?php echo $ssuser?> !</h2>
               </div>
               <div class="col-auto">
                 <form class="form-inline">

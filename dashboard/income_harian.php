@@ -4,6 +4,8 @@ session_start();
 if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
+}  else {
+  $ssuser = $_SESSION["ssuser"];
 }
 ?>
 <!doctype html>
@@ -31,7 +33,6 @@ if( !isset($_SESSION["login"])){
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 </head>
-
 <body class="vertical  dark  ">
   <div class="wrapper">
     <nav class="topnav navbar navbar-light">
@@ -51,19 +52,6 @@ if( !isset($_SESSION["login"])){
               <i class="fe fe-sun fe-16"></i>
             </a>
           </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="avatar avatar-sm mt-2">
-              <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-            </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Activities</a>
-          </div>
-        </li>
       </ul>
     </nav>
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
@@ -238,9 +226,9 @@ if( !isset($_SESSION["login"])){
                     <div class="modal-body-add">
 
 
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Nama</label>
-                        <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="txt_nama" required />
+                      <div class="form-group" >
+                        <label for="example-text-input" class="form-control-label" disabled>Nama</label>
+                        <input class="form-control" type="text" value="<?php echo $ssuser ?>" placeholder="Enter Name" maxlength="30" name="txt_nama" disabled />
 
                       </div>
 
@@ -321,45 +309,33 @@ $no++;
 
                               <div class="modal-header">
 
-                                <h5 class="modal-title" id="defaultModalLabel">Edit Karyawan</h5>
+                                <h5 class="modal-title" id="defaultModalLabel">Edit Penghasilan</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
+                              <form action="income_harian.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
                                 <div class="modal-body-add">
 
 
                                   <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Nama</label>
-                                    <input class="form-control" type="text" value="<?php echo $userName; ?>" placeholder="Enter Name" maxlength="30" name="nama" required />
+                                    <input class="form-control" type="text" value="<?php echo $userName; ?>" placeholder="Enter Name" maxlength="30" name="enama" disabled />
 
                                   </div>
-                                  <div class="form-group mb-3">
-                                    <label for="customFile">Photo</label>
-                                    <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile" name="fotoedit" value="<?php echo $foto; ?>">
-                                      <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                  </div>
+                                  
 
 
 
                                   <div class="form-group mb-3">
-                                    <label for="example-date">Tanggal Masuk</label>
-                                    <input class="form-control" id="example-date" type="date" value="<?php echo $tgl; ?>" name="tgl_masuk">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">No Hp</label>
-                                    <input class="form-control" name="nohp" type="text" value="<?php echo $nohp; ?>" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" />
-
+                                    <label for="example-date">Tanggal tambah</label>
+                                    <input class="form-control" id="example-date" type="date" value="<?php echo $tgl; ?>" name="tgl_tambah">
                                   </div>
 
 
                                   <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Email</label>
-                                    <input class="form-control" type="email" value="<?php echo $userEmail; ?>" placeholder="Enter Email" maxlength="30" name="email" />
+                                    <label for="example-text-input" class="form-control-label">Jumlah</label>
+                                    <input class="form-control" type="text" value="<?php echo number_format ($jumlah,0,',',''); ?>" placeholder="Enter Jumlah"  name="jumlah" />
 
                                   </div>
 
@@ -388,11 +364,11 @@ $no++;
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="karyawan.php?id=<?= $row['id'] ?>" method="post">
+                              <form action="income_harian.php?id=<?= $row['id'] ?>" method="post">
                                 <div class="modal-body">
                                   <div class="row">
 
-                                    Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['nama'] ?>
+                                    &nbsp; &nbsp; &nbsp; Apakah Anda Yakin ingin menghapus data  yang ditambah oleh : <?php echo $row['nama'] ?>
                                     <br>
                                     <br>
 
@@ -579,7 +555,7 @@ $no++;
 
 </html>
 
-<!-- Syntax Add Karyawan -->
+<!-- Syntax Add Income -->
 
 <?php
 error_reporting(0);
@@ -587,7 +563,7 @@ if (isset($_POST['add-income'])) {
   $userNama = $_POST['txt_nama'];
   $tglincome = date('Y-m-d', strtotime($_POST['txt_tgl_penghasilan']));
   $jumlah = $_POST['txt_jumlah'];
-  $query    = "INSERT INTO income SET nama = '$userNama',  tgl_income = '$tglincome',  jumlah = '$jumlah'";
+  $query    = "INSERT INTO income SET nama = '$ssuser',  tgl_income = '$tglincome',  jumlah = '$jumlah'";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
@@ -612,45 +588,32 @@ if (isset($_POST['add-income'])) {
 
 ?>
 
-<!-- END Add Karyawan -->
+<!-- END Add income -->
 
 
-<!-- Syntax Edit Karyawan -->
+<!-- Syntax Edit income -->
 <?php
 require('config.php');
 // error_reporting(1);
 $eid = $_GET['id'];
-$enama = $_POST['nama'];
-$etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
-$eemail = $_POST['email'];
-$enohp = $_POST['nohp'];
-$efoto = $_FILES['fotoedit']['name'];
-$file_tmp = $_FILES['fotoedit']['tmp_name'];
-move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
+$enama = $_POST['enama'];
+$etglincome = date('Y-m-d', strtotime($_POST['tgl_tambah']));
+$ejumlah = $_POST['jumlah'];
 
 
 if (isset($_POST['submit'])) {
   if (isset($_POST['submit'])) {
-    if ($efoto == "") {
-      $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama',nohp='$enohp',email='$eemail',tgl_masuk='$etglmasuk' WHERE id='$eid'");
+      $sql = mysqli_query($koneksi, "UPDATE `income` SET tgl_income='$etglincome', jumlah='$ejumlah' WHERE id='$eid'");
       echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
-                {window.location = 'karyawan.php';}
+                {window.location = 'income_harian.php';}
             })</script>";
-    } else {
-      $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama', foto='$efoto', nohp='$enohp',email='$eemail', tgl_masuk='$etglmasuk' WHERE id='$eid'");
-      echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'karyawan.php';}
-            })</script>";
-    }
   } else {
     echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
-                {window.location = 'karyawan.php';}
+                {window.location = 'income_harian.php';}
             })</script>";
   }
 }
@@ -662,20 +625,20 @@ error_reporting(0);
 $did = $_GET['id'];
 if (isset($_POST['delete'])) {
 
-  $querydel = "DELETE FROM karyawan WHERE id = '$did'";
+  $querydel = "DELETE FROM income WHERE id = '$did'";
   $result = mysqli_query($koneksi, $querydel);
 
   if ($result) {
     echo "<script>
     Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'karyawan.php';}
+        {window.location = 'income_harian.php';}
     })</script>";
   } else {
     echo "<script>
     Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'karyawan.php';}
+        {window.location = 'income_harian.php';}
     })</script>";
   }
 }

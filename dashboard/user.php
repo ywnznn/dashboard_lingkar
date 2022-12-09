@@ -51,19 +51,6 @@ if( !isset($_SESSION["login"])){
               <i class="fe fe-sun fe-16"></i>
             </a>
           </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="avatar avatar-sm mt-2">
-              <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-            </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Activities</a>
-          </div>
-        </li>
       </ul>
     </nav>
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
@@ -640,7 +627,7 @@ $enama = $_POST['username'];
 // $etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
 $eemail = $_POST['email'];
 $enohp = $_POST['nohp'];
-$epass = $_POST['password'];
+$epass = $_POST['pass'];
 $efoto = $_FILES['fotoedit']['name'];
 $file_tmp = $_FILES['fotoedit']['tmp_name'];
 move_uploaded_file($file_tmp, '../foto/user/' . $efoto);

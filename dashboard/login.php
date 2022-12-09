@@ -9,14 +9,20 @@ if( isset($_SESSION["login"])){
 }
 
 if (isset($_POST['submit'])) {
-    $email = $_POST['txt_email'];
+    $username = $_POST['txt_username'];
     $password = $_POST['txt_pass'];
  
-    $sql = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+    $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
     $result = mysqli_query($koneksi, $sql);
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
+    $data_login = mysqli_fetch_array($result, MYSQLI_BOTH);
+    $jumlah_login = mysqli_num_rows($result);
+
+
+    if ($jumlah_login == 1) {
+        // $row = mysqli_fetch_assoc($result);
         $_SESSION["login"] = true;
+        $_SESSION["ssuser"] = $data_login["username"];
+        
         header("Location: dashboard.php");
         exit;
     } else {
@@ -40,8 +46,8 @@ if (isset($_POST['submit'])) {
     <div class="form sign-in">
       <h2>Sign In</h2>
       <label>
-        <span>Email Address</span>
-        <input type="text" name="txt_email">
+        <span>Username</span>
+        <input type="text" name="txt_username">
       </label>
       <label>
         <span>Password</span>
