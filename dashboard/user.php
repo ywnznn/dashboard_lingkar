@@ -139,7 +139,7 @@ if( !isset($_SESSION["login"])){
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                 <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
-                <a class="nav-link pl-3" href="./income_bulanan.php"><span class="ml-1">Penghasilan Perbulan</span></a>
+                <a class="nav-link pl-3" href="./income_bulanan.php"><span class="ml-1">Report </span></a>
               </ul>
             </li>
           <li class="nav-item dropdown">
@@ -177,9 +177,7 @@ if( !isset($_SESSION["login"])){
               <span class="ml-3 item-text">User Setting</span><span class="sr-only">(current)</span>
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="user">
-              <li class="nav-item active">
-                <a class="nav-link pl-3" href="./accountsetting.php"><span class="ml-1 item-text">Account</span></a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link pl-3" href="./profil.php"><span
                     class="ml-1 item-text">Profile</span></a>

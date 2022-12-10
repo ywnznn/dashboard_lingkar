@@ -141,7 +141,7 @@ if( !isset($_SESSION["login"])){
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                 <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
-                <a class="nav-link pl-3" href="./income_bulanan.php"><span class="ml-1">Penghasilan Perbulan</span></a>
+                <a class="nav-link pl-3" href="./income_bulanan.php"><span class="ml-1">Report </span></a>
               </ul>
             </li>
           <li class="nav-item dropdown">
@@ -179,9 +179,7 @@ if( !isset($_SESSION["login"])){
               <span class="ml-3 item-text">User Setting</span><span class="sr-only">(current)</span>
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="user">
-              <li class="nav-item active">
-                <a class="nav-link pl-3" href="./accountsetting.php"><span class="ml-1 item-text">Account</span></a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link pl-3" href="./profil.php"><span
                     class="ml-1 item-text">Profile</span></a>
@@ -252,13 +250,16 @@ if( !isset($_SESSION["login"])){
                           ?>
                           <?php
                         }
-                          ?></h3>
-                        <p class="small text-muted mb-0"><span
-                            class="fe fe-arrow-down fe-12 text-danger"></span><span>-18.9% Last week</span></p>
+                          ?>
+                          <small class="text-muted mb-1"> &nbsp; &nbsp;Viewers</small>
+                        </h3>
+                        <small class="text-muted mb-1">Hari Ini</small>
+
                       </div>
-                      <div class="col-4 text-right">
+                       <!-- <small class="text-muted mb-1">Hari Ini</small> -->
+                      <!-- <div class="col-4 text-right">
                         <span class="sparkline inlineline"></span>
-                      </div>
+                      </div> -->
                     </div> <!-- /. row -->
                   </div> <!-- /. card-body -->
                 </div> <!-- /. card -->
@@ -308,10 +309,31 @@ if( !isset($_SESSION["login"])){
                   <div class="card-body">
                     <div class="row align-items-center">
                       <div class="col">
-                        <small class="text-muted mb-1">Visitors</small>
-                        <h3 class="card-title mb-0">108</h3>
+                        <small class="text-muted mb-1">Total Pendapatan</small>
+                        <h3 class="card-title mb-0">
+                          <?php
+                        require ("./config.php");
+                          $query = "SELECT DISTINCT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(CURRENT_DATE - INTERVAL 1 MONTH) AND YEAR(tgl_income)=YEAR(curdate())";
+                          $querysum = mysqli_query($koneksi,$query);
+
+                        while ($row = mysqli_fetch_array($querysum)) {
+                          $total = $row['total'];
+                          // echo '<h3> ' . $total . '</h3>';
+                        
+                        ?>
+                          <?php
+                          if ($total == '') {
+                            echo "<h3>Rp. 0</h3>";
+                          } else {
+                            echo "Rp. " . number_format($total, 0, ',', '.');
+                          }
+                          ?>
+                          <?php
+                        }
+                          ?>
+                        </h3>
                         <p class="small text-muted mb-0"><span
-                            class="fe fe-arrow-up fe-12 text-success"></span><span>37.7% Last week</span></p>
+                            class=" text-success"></span><span>Bulan Kemarin</span></p>
                       </div>
                       <div class="col-4 text-right">
                         <span class="sparkline inlinebar"></span>
