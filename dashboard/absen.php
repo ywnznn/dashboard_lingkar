@@ -5,7 +5,7 @@ if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
 }
-// sik mikir jal bntr ntr habis makan ku kerjain + ganti2 + mikir
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -203,12 +203,12 @@ if( !isset($_SESSION["login"])){
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="mb-2 page-title">Data Karyawan</h2>
-            <p class="card-text">Ini adalah data para karyawan yang bekerja di lingkar angkringan dan cafe</p>
+            <h2 class="mb-2 page-title">Absen</h2>
+            <p class="card-text">Ini adalah temapt untuk absen para karyawan yang bekerja di lingkar angkringan dan cafe</p>
 
 
-            <!-- Pop up Add Karyawan -->
-            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Karyawan</button>
+            <!-- Pop up Add Absen -->
+            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Absen</button>
 
             <div class="modal fade modal-right modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
@@ -216,12 +216,12 @@ if( !isset($_SESSION["login"])){
 
                   <div class="modal-header">
 
-                    <h5 class="modal-title" id="defaultModalLabel">Add Karyawan</h5>
+                    <h5 class="modal-title" id="defaultModalLabel">Add Absen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="karyawan.php" method="post" enctype="multipart/form-data">
+                  <form action="absen.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body-add">
 
 
@@ -229,37 +229,22 @@ if( !isset($_SESSION["login"])){
                         <label for="example-text-input" class="form-control-label">Nama</label>
                         <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="txt_nama" required />
 
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="customFile">Photo</label>
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFile" name="foto">
-                          <label class="custom-file-label" for="customFile">Choose file</label>
-                        </div>
-                      </div>
+
 
                       <div class="form-group mb-3">
-                        <label for="example-date">Tanggal Masuk</label>
-                        <input class="form-control" id="example-date" type="date" name="txt_tgl_masuk">
+                        <label for="example-date">Tanggal</label>
+                        <input class="form-control" id="example-date" type="date" name="txt_tanggal">
                       </div>
-
+                        
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">No Hp</label>
-                        <input class="form-control" name="txt_nohp" type="text" value="" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" required />
-
-                      </div>
-
-
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Email</label>
-                        <input class="form-control" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_email" required />
-
+                        <label for="example-text-input" class="form-control-label">Keterangan</label>
+                        <input class="form-control" type="text" value="" placeholder="Enter Keterangan" maxlength="30" name="txt_jumlah" required />
                       </div>
 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                      <button class="btn mb-2 btn-primary" type="submit" name="add-user">Add User</button>
+                      <button class="btn mb-2 btn-primary" type="submit" name="add-absen">Add Absen</button>
                     </div>
                   </form>
 
@@ -268,9 +253,6 @@ if( !isset($_SESSION["login"])){
 
             </div>
             <!-- End Pop Up Add Karyawan-->
-
-
-
 
             <div class="row my-4">
               <!-- Small table -->
@@ -281,27 +263,22 @@ if( !isset($_SESSION["login"])){
                     <table id="tableku" class="table datatables">
                       <thead>
                         <tr>
-                          <th>No</th>
                           <th>Nama</th>
-                          <th>Photo profile</th>
-                          <th>Tanggal Masuk</th>
-                          <th>Email</th>
-                          <th>Phone</th>
+                          <th>Tanggal</th>
+                          <th>Keterangan</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <?php
-                          $query = "SELECT * FROM karyawan";
+                          $query = "SELECT * FROM absen";
                           $result = mysqli_query($koneksi, $query);
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
                             $userName = $row['nama'];
-                            $tgl = $row['tgl_masuk'];
-                            $userEmail = $row['email'];
-                            $nohp = $row['nohp'];
-                            $foto = $row['foto'];
+                            $tanggal = $row['tanggal'];
+                            $keterangan = $row['keterangan'];
 
 $no++;
                           ?>
@@ -309,15 +286,11 @@ $no++;
                             <td><?php echo $userName; ?></td>
                             <td>
 
-                              <span class="avatar avatar-sm mt-2">
-                                <img src="./foto/user/<?php echo $foto; ?>" alt="..." class="avatar-img rounded-circle">
-                              </span>
-
-                            </td>
-                            <td><?php echo $tgl; ?></td>
-                            <td><?php echo $userEmail; ?></td>
-                            <td><?php echo $nohp; ?></td>
-
+                           </td>
+                           
+                            <td><?php echo $tanggal; ?></td>
+                            <td><?php echo $keterangan; ?></td>
+          
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
                               <button class="btn  btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
@@ -332,12 +305,12 @@ $no++;
 
                               <div class="modal-header">
 
-                                <h5 class="modal-title" id="defaultModalLabel">Edit Karyawan</h5>
+                                <h5 class="modal-title" id="defaultModalLabel">Edit Absen</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
                                 <div class="modal-body-add">
 
 
@@ -346,31 +319,15 @@ $no++;
                                     <input class="form-control" type="text" value="<?php echo $userName; ?>" placeholder="Enter Name" maxlength="30" name="nama" required />
 
                                   </div>
+                                 
                                   <div class="form-group mb-3">
-                                    <label for="customFile">Photo</label>
-                                    <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile" name="fotoedit" value="<?php echo $foto; ?>">
-                                      <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                  </div>
-
-
-
-                                  <div class="form-group mb-3">
-                                    <label for="example-date">Tanggal Masuk</label>
-                                    <input class="form-control" id="example-date" type="date" value="<?php echo $tgl; ?>" name="tgl_masuk">
+                                    <label for="example-date">Tanggal</label>
+                                    <input class="form-control" id="example-date" type="date" value="<?php echo $tanggal; ?>" name="tanggal">
                                   </div>
 
                                   <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">No Hp</label>
-                                    <input class="form-control" name="nohp" type="text" value="<?php echo $nohp; ?>" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" />
-
-                                  </div>
-
-
-                                  <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Email</label>
-                                    <input class="form-control" type="email" value="<?php echo $userEmail; ?>" placeholder="Enter Email" maxlength="30" name="email" />
+                                    <label for="example-text-input" class="form-control-label">Keterangan</label>
+                                    <input class="form-control" type="text" value="<?php echo $keterangan; ?>" placeholder="Enter Name" maxlength="50" name="keterangan" required />
 
                                   </div>
 
@@ -412,11 +369,11 @@ $no++;
                                   <div class="modal-footer">
 
 
-                                    <!-- <a href="karyawan.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
+                                    <!-- <a href="absem.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
 
                                     <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
                                     <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
-                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_absen.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
                                   </div>
                               </form>
                             </div>
@@ -590,92 +547,76 @@ $no++;
 
 </html>
 
-<!-- Syntax Add Karyawan -->
+<!-- Syntax Add absen -->
 
 <?php
 error_reporting(0);
 if (isset($_POST['add-user'])) {
-  $userNama = $_POST['txt_nama'];
-  $userNoHp = $_POST['txt_nohp'];
-  $userMail = $_POST['txt_email'];
-  $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
-  // $userAlamat = $_POST['txt_alamat'];
+  $userName = $row['nama'];
+  $keterangan = $row['keterangan'];
+  $tanggal = date('Y-m-d', strtotime($_POST['txt_tanggal']));
+   // $userAlamat = $_POST['txt_alamat'];
 
-
-  $foto = $_FILES['foto']['name'];
-  $file_tmp = $_FILES['foto']['tmp_name'];
-  move_uploaded_file($file_tmp, './foto/user/' . $foto);
-
-  $query    = "INSERT INTO karyawan SET nama = '$userNama', foto = '$foto', nohp = '$userNoHp',  tgl_masuk = '$tglmasuk',  email = '$userMail'";
+  $query    = "INSERT INTO absen SET nama = '$userName', tanggal = '$tanggal',  keterangan = '$keterangan'";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
     echo "<script>
-  	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
+  	Swal.fire({title: 'Absen Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
   	}).then((result) => {if (result.value)
-  		{window.location = 'karyawan.php';}
+  		{window.location = 'absen.php';}
   	})</script>";
   } else {
 
     echo "<script>
-  		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
+  		Swal.fire({title: 'Absen Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
   		}).then((result) => {if (result.value)
-  			{window.location = 'karyawan.php';}
+  			{window.location = 'absen.php';}
   		})</script>";
   }
   // if($query)
   // {
-  //   header("location:karyawan.php");
+  //   header("location:absen.php");
   // }
 }
 
 ?>
 
-<!-- END Add Karyawan -->
+<!-- END Add absen -->
 
 
-<!-- Syntax Edit Karyawan -->
+<!-- Syntax Edit absen -->
 <?php
 require('config.php');
 // error_reporting(1);
 $eid = $_GET['id'];
 $enama = $_POST['nama'];
-$etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
-$eemail = $_POST['email'];
-$enohp = $_POST['nohp'];
-$efoto = $_FILES['fotoedit']['name'];
-$file_tmp = $_FILES['fotoedit']['tmp_name'];
-move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
-
+$etanggal = date('Y-m-d', strtotime($_POST['tanggal']));
+$eketerangan = $_POST['keterangan'];
 
 if (isset($_POST['submit'])) {
   if (isset($_POST['submit'])) {
-    if ($efoto == "") {
-      $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama',nohp='$enohp',email='$eemail',tgl_masuk='$etglmasuk' WHERE id='$eid'");
+      $sql = mysqli_query($koneksi, "UPDATE `absen` SET nama='$enama',tanggal = '$etanggal',  keterangan = '$eketerangan' WHERE id='$eid'");
       echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
-                {window.location = 'karyawan.php';}
+                {window.location = 'absen.php';}
             })</script>";
     } else {
-      $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama', foto='$efoto', nohp='$enohp',email='$eemail', tgl_masuk='$etglmasuk' WHERE id='$eid'");
+      $sql = mysqli_query ($koneksi, "UPDATE `absen` SET nama='$enama',tanggal = '$etanggal',  keterangan = '$eketerangan' WHERE id='$eid'");
       echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
-                {window.location = 'karyawan.php';}
+                {window.location = 'absen.php';}
             })</script>";
     }
   } else {
     echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
-                {window.location = 'karyawan.php';}
+                {window.location = 'absen.php';}
             })</script>";
   }
-}
-
-
-
 error_reporting(0);
 
 $did = $_GET['id'];
@@ -686,15 +627,15 @@ if (isset($_POST['delete'])) {
 
   if ($result) {
     echo "<script>
-    Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
+    Swal.fire({title: 'Absen Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'karyawan.php';}
+        {window.location = 'absen.php';}
     })</script>";
   } else {
     echo "<script>
-    Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
+    Swal.fire({title: 'Absen Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'karyawan.php';}
+        {window.location = 'absen.php';}
     })</script>";
   }
 }
