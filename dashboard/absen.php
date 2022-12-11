@@ -5,7 +5,7 @@ if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
 }
-// masih error
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -235,7 +235,7 @@ if( !isset($_SESSION["login"])){
                         <label for="example-date">Tanggal</label>
                         <input class="form-control" id="example-date" type="date" name="txt_tanggal">
                       </div>
-                        //ini masih bingung yg bawah
+                        
                       <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Keterangan</label>
                         <input class="form-control" type="text" value="" placeholder="Enter Keterangan" maxlength="30" name="txt_jumlah" required />
@@ -266,6 +266,7 @@ if( !isset($_SESSION["login"])){
                           <th>Nama</th>
                           <th>Tanggal</th>
                           <th>Keterangan</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -285,7 +286,8 @@ $no++;
                             <td><?php echo $userName; ?></td>
                             <td>
 
-                            </td>
+                           </td>
+                           
                             <td><?php echo $tanggal; ?></td>
                             <td><?php echo $keterangan; ?></td>
           
@@ -308,7 +310,7 @@ $no++;
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="karyawan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
                                 <div class="modal-body-add">
 
 
@@ -325,7 +327,7 @@ $no++;
 
                                   <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Keterangan</label>
-                                    <input class="form-control" type="text" value="<?php echo $keterangan; ?>" placeholder="Enter Name" maxlength="30" name="keterangan" required />
+                                    <input class="form-control" type="text" value="<?php echo $keterangan; ?>" placeholder="Enter Name" maxlength="50" name="keterangan" required />
 
                                   </div>
 
@@ -367,11 +369,11 @@ $no++;
                                   <div class="modal-footer">
 
 
-                                    <!-- <a href="karyawan.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
+                                    <!-- <a href="absem.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
 
                                     <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
                                     <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
-                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_absen.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
                                   </div>
                               </form>
                             </div>
@@ -553,6 +555,7 @@ if (isset($_POST['add-user'])) {
   $userName = $row['nama'];
   $keterangan = $row['keterangan'];
   $tanggal = date('Y-m-d', strtotime($_POST['txt_tanggal']));
+   // $userAlamat = $_POST['txt_alamat'];
 
   $query    = "INSERT INTO absen SET nama = '$userName', tanggal = '$tanggal',  keterangan = '$keterangan'";
   $result   = mysqli_query($koneksi, $query);
@@ -595,21 +598,21 @@ if (isset($_POST['submit'])) {
   if (isset($_POST['submit'])) {
       $sql = mysqli_query($koneksi, "UPDATE `absen` SET nama='$enama',tanggal = '$etanggal',  keterangan = '$eketerangan' WHERE id='$eid'");
       echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'absen.php';}
             })</script>";
     } else {
-      $sql = mysqli_query($koneksi, "UPDATE `karyawan` SET nama='$enama', foto='$efoto', nohp='$enohp',email='$eemail', tgl_masuk='$etglmasuk' WHERE id='$eid'");
+      $sql = mysqli_query ($koneksi, "UPDATE `absen` SET nama='$enama',tanggal = '$etanggal',  keterangan = '$eketerangan' WHERE id='$eid'");
       echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'absen.php';}
             })</script>";
     }
   } else {
     echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'absen.php';}
             })</script>";
@@ -624,13 +627,13 @@ if (isset($_POST['delete'])) {
 
   if ($result) {
     echo "<script>
-    Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
+    Swal.fire({title: 'Absen Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
         {window.location = 'absen.php';}
     })</script>";
   } else {
     echo "<script>
-    Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
+    Swal.fire({title: 'Absen Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
         {window.location = 'absen.php';}
     })</script>";
