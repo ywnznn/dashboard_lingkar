@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $_SESSION["login"] = true;
         $_SESSION["ssuser"] = $data_login["username"];
     $_SESSION["ssfoto"] = $data_login["foto"];
-    $_SESSION["ssfullname"] = $data_login["fullname"];
+    $_SESSION["ssfullname"] = $data_login["namalengkap"];
     $_SESSION["ssemail"] = $data_login["email"];
     $_SESSION["ssalamat"] = $data_login["alamat"];
     $_SESSION["sskota"] = $data_login["kota"];

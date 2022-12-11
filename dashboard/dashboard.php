@@ -6,6 +6,7 @@ if( !isset($_SESSION["login"])){
   exit;
 } else {
   $ssuser = $_SESSION["ssuser"];
+  $ssfullname = $_SESSION["ssfullname"];
 }
       
     $data_penjualan = mysqli_query($koneksi, "SELECT tgl_income, SUM(jumlah) AS total FROM income GROUP BY tgl_income");
@@ -170,7 +171,7 @@ if( !isset($_SESSION["login"])){
               <span> LANDING PAGE</span>
             </p>
           <li class="nav-item w-100">
-            <a class="nav-link" href="https://www.instagram.com/lingkar.cafe_/">
+            <a class="nav-link" href="../index.php">
               <br>
               <i class="fe fe-external-link"></i>
               <span class="ml-3 item-text">Lingkar Cafe</span>
@@ -215,7 +216,7 @@ if( !isset($_SESSION["login"])){
           <div class="col-12">
             <div class="row align-items-center mb-2">
               <div class="col">
-                <h2 class="h5 page-title">Welcome <?php echo $ssuser?> !</h2>
+                <h2 class="h5 page-title">Welcome <?php echo $ssfullname?> !</h2>
               </div>
               <div class="col-auto">
                 <form class="form-inline">
