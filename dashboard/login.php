@@ -22,7 +22,14 @@ if (isset($_POST['submit'])) {
         // $row = mysqli_fetch_assoc($result);
         $_SESSION["login"] = true;
         $_SESSION["ssuser"] = $data_login["username"];
-        
+    $_SESSION["ssfoto"] = $data_login["foto"];
+    $_SESSION["ssfullname"] = $data_login["fullname"];
+    $_SESSION["ssemail"] = $data_login["email"];
+    $_SESSION["ssalamat"] = $data_login["alamat"];
+    $_SESSION["sskota"] = $data_login["kota"];
+    $_SESSION["sskecamatan"] = $data_login["kecamatan"];
+    $_SESSION["ssprovinsi"] = $data_login["provinsi"];
+    $_SESSION["sspassword"] = $data_login["password"];
         header("Location: dashboard.php");
         exit;
     } else {
