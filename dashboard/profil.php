@@ -301,13 +301,13 @@ else {
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Nama Lengkap</label>
-                    <input class="form-control" type="text" value="<?php echo $ssfullname?>" name="edit_namalengkap">
+                    <input class="form-control" type="text" value="<?php echo $namalengkap?>" name="edit_namalengkap">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Username</label>
-                    <input class="form-control" type="text" value="<?php echo $ssuser?>" name="edit_username">
+                    <input class="form-control" type="text" value="<?php echo $userName?>" name="edit_username">
                   </div>
                 </div>
                   </div>
@@ -315,13 +315,13 @@ else {
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Email</label>
-                    <input class="form-control" type="text" value="<?php echo $ssemail?>" name="edit_email">
+                    <input class="form-control" type="text" value="<?php echo $userEmail?>" name="edit_email">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Password</label>
-                    <input class="form-control" type="password" value="<?php echo $sspassword?>" name="edit_password">
+                    <input class="form-control" type="password" value="<?php echo $password?>" name="edit_password">
                   </div>
                 </div>
                 
@@ -337,14 +337,14 @@ else {
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">No HP</label>
-                    <input class="form-control" type="text" value="<?php echo $ssnohp?>" name="edit_nohp">
+                    <input class="form-control" type="text" value="<?php echo $nohp?>" name="edit_nohp">
                   </div>
                 </div>
                 </div>
                 <div class="form-group">
                       <label for="inputState5">Kecamatan</label>
                       <select id="inputState5" class="form-control" name="edit_kecamatan">
-                        <option selected=""><?php echo $sskecamatan?></option>
+                        <option selected=""><?php echo $kecamatan?></option>
                         <option>Ajung</option>
                         <option>Ambulu</option>
                         <option>Arjasa</option>
@@ -382,24 +382,24 @@ else {
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Kota</label>
-                    <input class="form-control" type="text" value="<?php echo $sskota?>" name="edit_kota">
+                    <input class="form-control" type="text" value="<?php echo $kota?>" name="edit_kota">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">provinsi</label>
-                    <input class="form-control" type="text" value="<?php echo $ssprovinsi?>" name="edit_provinsi">
+                    <input class="form-control" type="text" value="<?php echo $provinsi?>" name="edit_provinsi">
                   </div>
                 </div>
                 </div>
                 
                 <div class="mb-3">
                    <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="edit_alamat"><?php echo $ssalamat?></textarea>
+                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="edit_alamat"><?php echo $alamat?></textarea>
                 </div>
                 <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                      <button class="btn mb-2 btn-primary" type="submit" name="submit">Add User</button>
+                      <button class="btn mb-2 btn-primary" type="submit" name="submit">Ubah Profile</button>
                     </div>
                 </div>
                 
