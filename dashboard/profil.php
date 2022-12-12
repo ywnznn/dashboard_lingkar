@@ -115,8 +115,7 @@ else {
                   class="dropdown-toggle nav-link"><i class="fe fe-book fe-16"></i><span
                     class="ml-3 item-text">Income</span></a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="contact"><a class="nav-link pl-3"
-                    href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a><a class="nav-link pl-3"
-                    href="./income_bulanan.php"><span class="ml-1">Report </span></a></ul>
+                    href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a></ul>
               </li>
               <li class="nav-item dropdown"><a href="#charts" data-toggle="collapse" aria-expanded="false"
                   class="dropdown-toggle nav-link"><i class="fe fe-pie-chart fe-16"></i><span
@@ -226,7 +225,8 @@ else {
                       </div>
                       <div class="col-md-6">
                         <div class="form-group"><label for="example-text-input"
-                            class="form-control-label">Email</label><input class="form-control" type="text"
+                            class="form-control-label">Email</label>
+                            <input class="form-control" type="text"
                             value="<?php echo $userEmail ?>" disabled></div>
                       </div>
                     </div>

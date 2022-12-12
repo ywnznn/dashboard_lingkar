@@ -140,7 +140,6 @@ if( !isset($_SESSION["login"])){
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                 <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
-                <a class="nav-link pl-3" href="./income_bulanan.php"><span class="ml-1">Report </span></a>
               </ul>
             </li>
           <li class="nav-item dropdown">
@@ -291,6 +290,7 @@ if( !isset($_SESSION["login"])){
                       </thead>
                       <tbody>
                         <tr>
+                          
                           <?php
                           $query = "SELECT * FROM karyawan";
                           $result = mysqli_query($koneksi, $query);
