@@ -205,60 +205,129 @@ if( !isset($_SESSION["login"])){
 
 
             <!-- Pop up Add User -->
-            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add User</button>
+            <button type="button" class="btn mb-2 btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Add User</button>
 
-            <div class="modal fade modal-right modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content"><br>
 
-                  <div class="modal-header">
-
-                    <h5 class="modal-title" id="defaultModalLabel">Add User</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <form action="user.php" method="post" enctype="multipart/form-data">
-                    <div class="modal-body-add">
-
-
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Usernama</label>
-                        <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="txt_nama" required />
-
+                      <center> <h5 class="modal-title" id="defaultModalLabel">Add User</h5></center>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-footer">
                       </div>
-                      <div class="form-group mb-3">
+                      
+                <form action="user.php" method="post" enctype="multipart/form-data">
+                <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Nama Lengkap</label>
+                    <input class="form-control" type="text" value="" name="add_namalengkap">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Username</label>
+                    <input class="form-control" type="text" value="" name="add_username">
+                  </div>
+                </div>
+                  </div>
+                  <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Email</label>
+                    <input class="form-control" type="text" value="" name="add_email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Password</label>
+                    <input class="form-control" type="password" value="" name="add_password">
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
                         <label for="customFile">Photo</label>
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFile" name="foto">
+                          <input type="file" class="custom-file-input" id="customFile" name="add_foto">
                           <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Email</label>
-                        <input class="form-control" type="email" value="" placeholder="Enter Email" maxlength="30" name="txt_email" required />
-
-                      </div>
-                      
-
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">No Hp</label>
-                        <input class="form-control" name="txt_nohp" type="text" value="" placeholder="Enter No Hp" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" name="txt_nohp" id="txt_nohp" required />
-
-                      </div>
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Password</label>
-                        <input class="form-control" type="password" value="" placeholder="Enter Password" minlength="6" maxlength="30" name="txt_pass" required />
-
-                      </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No HP</label>
+                    <input class="form-control" type="text" value="" name="add_nohp">
+                  </div>
+                </div>
+                </div>
+                <div class="form-group">
+                      <label for="inputState5">Kecamatan</label>
+                      <select id="inputState5" class="form-control" name="add_kecamatan">
+                        <option selected=""></option>
+                        <option>Ajung</option>
+                        <option>Ambulu</option>
+                        <option>Arjasa</option>
+                        <option>Balung</option>
+                        <option>Bangsalsari</option>
+                        <option>Gumuk Mas</option>
+                        <option>Jelbuk</option>
+                        <option>Jenggawah</option>
+                        <option>Jombang</option>
+                        <option>Kalisat</option>
+                        <option>Kaliwates</option>
+                        <option>Kencong</option>
+                        <option>Ledokombo</option>
+                        <option>Mayang</option>
+                        <option>Mumbulsari</option>
+                        <option>Pakusari</option>
+                        <option>Panti</option>
+                        <option>Patrang</option>
+                        <option>Puger</option>
+                        <option>Rambipuji</option>
+                        <option>Semboro</option>
+                        <option>Silo</option>
+                        <option>Sukorambi</option>
+                        <option>Sukowono</option>
+                        <option>Sumber Baru</option>
+                        <option>Sumber Jambe</option>
+                        <option>Sumber Sari</option>
+                        <option>Tanggul</option>
+                        <option>Tempurejo</option>
+                        <option>Umbulsari</option>
+                        <option>Wuluhan</option>
+                      </select>
                     </div>
-                    <div class="modal-footer">
+                    <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Kota</label>
+                    <input class="form-control" type="text" value="" name="add_kota">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">provinsi</label>
+                    <input class="form-control" type="text" value="" name="add_provinsi">
+                  </div>
+                </div>
+                </div>
+                
+                <div class="mb-3">
+                   <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="add_alamat"></textarea>
+                </div>
+                <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
                       <button class="btn mb-2 btn-primary" type="submit" name="add-user">Add User</button>
                     </div>
+                </div>
+                
+              </div>
+                    </div>
                   </form>
 
-                </div>
+                
               </div>
 
             </div>
@@ -277,10 +346,15 @@ if( !isset($_SESSION["login"])){
                        <thead>
                         <tr>
                           <th>NO</th>
+                          <th>Nama Lengkap</th>
                           <th>Username</th>
                           <th>Photo profile</th>
                           <th>Email</th>
                           <th>Phone</th>
+                          <th>Kecamatan</th>
+                          <th>kota</th>
+                          <th>provinsi</th>
+                          <th>alamat</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -291,16 +365,22 @@ if( !isset($_SESSION["login"])){
                           $result = mysqli_query($koneksi, $query);
                           $noUrut = 0;
                           while ($row = mysqli_fetch_array($result)) {
+                            $namalengkap = $row['namalengkap'];
                             $userName = $row['username'];
                             $userEmail = $row['email'];
                             $nohp = $row['nohp'];
                             $foto = $row['foto'];
                             $password = $row['password'];
+                            $kecamatan = $row['kecamatan'];
+                            $kota = $row['kota'];
+                            $provinsi = $row['provinsi'];
+                            $alamat = $row['alamat'];
 
 $noUrut++;
                           ?>
                           
                           <td><?php echo $noUrut; ?></td>
+                          <td><?php echo $namalengkap; ?></td>
                             <td><?php echo $userName; ?></td>
                             <td>
 
@@ -311,6 +391,10 @@ $noUrut++;
                             </td>
                             <td><?php echo $userEmail; ?></td>
                             <td><?php echo $nohp; ?></td>
+                            <td><?php echo $kecamatan; ?></td>
+                            <td><?php echo $kota; ?></td>
+                            <td><?php echo $provinsi; ?></td>
+                            <td><?php echo $alamat; ?></td>
 
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
@@ -578,21 +662,59 @@ $noUrut++;
 <!-- Syntax Add User -->
 
 <?php
+// error_reporting(0);
+// if (isset($_POST['add-user'])) {
+//   $userNama = $_POST['txt_nama'];
+//   $userNoHp = $_POST['txt_nohp'];
+//   $userMail = $_POST['txt_email'];
+//   $userPass = $_POST['txt_pass'];
+//   // $userAlamat = $_POST['txt_alamat'];
+
+
+//   $foto = $_FILES['foto']['name'];
+//   $file_tmp = $_FILES['foto']['tmp_name'];
+//   move_uploaded_file($file_tmp, './foto/user/' . $foto);
+
+//   $query    = "INSERT INTO user SET username= '$userNama', foto= '$foto', nohp= '$userNoHp',  email= '$userMail', password= '$userPass'";
+//   $result   = mysqli_query($koneksi, $query);
+
+//   if ($query) {
+//     echo "<script>
+//   	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
+//   	}).then((result) => {if (result.value)
+//   		{window.location = 'user.php';}
+//   	})</script>";
+//   } else {
+
+//     echo "<script>
+//   		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
+//   		}).then((result) => {if (result.value)
+//   			{window.location = 'user.php';}
+//   		})</script>";
+//   }
+ 
+// }
 error_reporting(0);
 if (isset($_POST['add-user'])) {
-  $userNama = $_POST['txt_nama'];
-  $userNoHp = $_POST['txt_nohp'];
-  $userMail = $_POST['txt_email'];
-  $userPass = $_POST['txt_pass'];
+$namalengkap = $_POST['add_namalengkap'];
+$user = $_POST['add_username'];
+$userEmail = $_POST['add_email'];
+$nohp = $_POST['add_nohp'];
+$password = $_POST['add_password'];
+$kecamatan = $_POST['add_kecamatan'];
+$kota = $_POST['add_kota'];
+$provinsi = $_POST['add_provinsi'];
+$alamat = $_POST['add_alamat'];
+  // $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
   // $userAlamat = $_POST['txt_alamat'];
 
 
-  $foto = $_FILES['foto']['name'];
-  $file_tmp = $_FILES['foto']['tmp_name'];
+  $foto = $_FILES['add_foto']['name'];
+  $file_tmp = $_FILES['add_foto']['tmp_name'];
   move_uploaded_file($file_tmp, './foto/user/' . $foto);
 
-  $query    = "INSERT INTO user SET username = '$userNama', foto = '$foto', nohp = '$userNoHp',  email = '$userMail', password = '$userPass'";
-  $result   = mysqli_query($koneksi, $query);
+  $query = "INSERT INTO user SET namalengkap='$namalengkap', username = '$user', foto = '$foto', nohp = '$nohp', email = '$userEmail', password= '$password', kecamatan='$kecamatan', kota='$kota', provinsi='$provinsi', alamat='$alamat'";
+  $result = mysqli_query($koneksi, $query);
 
   if ($query) {
     echo "<script>
@@ -608,7 +730,6 @@ if (isset($_POST['add-user'])) {
   			{window.location = 'user.php';}
   		})</script>";
   }
- 
 }
 
 ?>
@@ -619,7 +740,7 @@ if (isset($_POST['add-user'])) {
 <!-- Syntax Edit User -->
 <?php
 require('config.php');
-// error_reporting(1);
+error_reporting(0);
 $eid = $_GET['id'];
 $enama = $_POST['username'];
 // $etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
@@ -628,20 +749,20 @@ $enohp = $_POST['nohp'];
 $epass = $_POST['pass'];
 $efoto = $_FILES['fotoedit']['name'];
 $file_tmp = $_FILES['fotoedit']['tmp_name'];
-move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
+move_uploaded_file($file_tmp, './foto/user/' . $efoto);
 
 
 if (isset($_POST['submit'])) {
   if (isset($_POST['submit'])) {
     if ($efoto == "") {
-      $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama',nohp='$enohp',email='$eemail', password ='$epass' WHERE id='$eid'");
+      $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama',nohp='$enohp',email='$eemail', password='$epass' WHERE id='$eid'");
       echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'user.php';}
             })</script>";
     } else {
-      $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama', foto='$efoto', nohp='$enohp',email='$eemail', password ='$epass' WHERE id='$eid'");
+      $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama', foto='$efoto', nohp='$enohp',email='$eemail', password='$epass' WHERE id='$eid'");
       echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
@@ -657,6 +778,48 @@ if (isset($_POST['submit'])) {
   }
 }
 
+
+
+// require('./koneksi.php');
+// error_reporting(0);
+// $eid = $_GET['id'];
+// $enama = $_POST['username'];
+// // $etglmasuk = date('Y-m-d', strtotime($_POST['tgl_masuk']));
+// $eemail = $_POST['email'];
+// $enohp = $_POST['nohp'];
+// $epass = $_POST['pass'];
+// $efoto = $_FILES['fotoedit']['name'];
+// $file_tmp = $_FILES['fotoedit']['tmp_name'];
+// move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
+
+
+// if (isset($_POST['submit'])) {
+//   if (isset($_POST['submit'])) {
+//     if ($foto == "") {
+//       $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama',nohp='$enohp',email='$eemail',password='$epass' WHERE id='$eid'");
+//       // header('location:users.view.php');
+//       echo "<script>
+//                    Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+//             }).then((result) => {if (result.value)
+//                 {window.location = 'user.php';}            
+//               })</script>";
+//     } else {
+//       $sql = mysqli_query($koneksi, "UPDATE `user` SET username='$enama', foto='$efoto', nohp='$enohp',email='$eemail', password='$epass' WHERE id='$eid'");
+//       // header('location:users.view.php');
+//       echo "<script>
+//              Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+//              }).then((result) => {if (result.value)
+//                  {window.location = 'user.php';}
+//              })</script>";
+//     }
+//   } else {
+//     echo "<script>
+//              Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+//              }).then((result) => {if (result.value)
+//                  {window.location = 'user.php';}
+//              })</script>";
+//   }
+// }
 
 
 error_reporting(0);

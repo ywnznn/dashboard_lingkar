@@ -205,17 +205,29 @@ if( !isset($_SESSION["login"])){
 
     </aside>
     <!-- END DARI SIDEBAR -->
+
+    
     <main role="main" class="main-content">
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12 col-lg-10 col-xl-8">
               <h2 class="h3 mb-4 page-title">Settings profile</h2>
               <div class="my-4">
+                
                 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
+                    
+
                   </li>
+                  
                 </ul>
+                <button type="button" class="btn mb-2 btn-primary center-block" data-toggle="modal" data-target=".bd-example-modal-xl">Add User</button>
+                <style>
+                  button {
+    float: right;
+}
+                </style>
                 <form>
                   <div class="row mt-5 align-items-center">
                     <div class="col-md-3 text-center mb-5">
@@ -250,7 +262,7 @@ if( !isset($_SESSION["login"])){
                 <div class="col-md-8">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Nama Lengkap</label>
-                    <input class="form-control" type="text" value="<?php echo $ssfullname?>" name="txt_namalengkap">
+                    <input class="form-control" type="text" value="<?php echo $ssfullname?>" disabled>
                   </div>
                 </div>
                   </div>
@@ -258,19 +270,19 @@ if( !isset($_SESSION["login"])){
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Username</label>
-                    <input class="form-control" type="text" value="<?php echo $ssuser ?>" name="txt_username">
+                    <input class="form-control" type="text" value="<?php echo $ssuser ?>" disabled>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Email</label>
-                    <input class="form-control" type="text" value="<?php echo $ssemail ?>" name="txt_email">
+                    <input class="form-control" type="text" value="<?php echo $ssemail ?>" disabled>
                   </div>
                 </div>
                 </div>
                 <div class="form-group">
                       <label for="inputState5">Kecamatan</label>
-                      <select id="inputState5" class="form-control" name="txt_kecamatan">
+                      <select id="inputState5" class="form-control" disabled>
                         <option selected=""><?php echo $sskecamatan ?></option>
                         <option>Ajung</option>
                         <option>Ambulu</option>
@@ -322,41 +334,142 @@ if( !isset($_SESSION["login"])){
                 
                 <div class="mb-3">
                    <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="txt_alamat"><?php echo $ssalamat ?></textarea>
+                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="txt_alamat"disabled><?php echo $ssalamat ?></textarea>
                 </div>
                 </div>
               </div>
-                            <hr class="my-4">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="inputPassword4">Old Password</label>
-                        <input type="password" class="form-control" id="inputPassword5" value="<?php echo $sspassword?>">
+
+
+              <!-- Pop up Add User -->
+            <!-- <button type="button" class="btn mb-2 btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Add User</button> -->
+
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content"><br>
+
+                      <center> <h5 class="modal-title" id="defaultModalLabel">Add User</h5></center>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-footer">
                       </div>
-                      <div class="form-group">
-                        <label for="inputPassword5">New Password</label>
-                        <input type="password" class="form-control" id="inputPassword5" name="txt_newpassword">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputPassword6">Confirm Password</label>
-                        <input type="password" class="form-control" id="inputPassword6">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <p class="mb-2">Password requirements</p>
-                      <p class="small text-muted mb-2"> To create a new password, you have to meet all of the following requirements: </p>
-                      <ul class="small text-muted pl-4 mb-0">
-                        <li> Minimum 8 character </li>
-                        <li>At least one special character</li>
-                        <li>At least one number</li>
-                        <li>Can’t be the same as a previous password </li>
-                      </ul>
-                    </div>
-                    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<center><button type="submit" class="btn btn-primary" name="submit">Save Change</button></center>
+                      
+                <form action="user.php" method="post" enctype="multipart/form-data">
+                <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Nama Lengkap</label>
+                    <input class="form-control" type="text" value="" name="add_namalengkap">
                   </div>
-</form>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Username</label>
+                    <input class="form-control" type="text" value="" name="add_username">
+                  </div>
+                </div>
+                  </div>
+                  <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Email</label>
+                    <input class="form-control" type="text" value="" name="add_email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Password</label>
+                    <input class="form-control" type="password" value="" name="add_password">
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                        <label for="customFile">Photo</label>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFile" name="add_foto">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No HP</label>
+                    <input class="form-control" type="text" value="" name="add_nohp">
+                  </div>
+                </div>
+                </div>
+                <div class="form-group">
+                      <label for="inputState5">Kecamatan</label>
+                      <select id="inputState5" class="form-control" name="add_kecamatan">
+                        <option selected=""></option>
+                        <option>Ajung</option>
+                        <option>Ambulu</option>
+                        <option>Arjasa</option>
+                        <option>Balung</option>
+                        <option>Bangsalsari</option>
+                        <option>Gumuk Mas</option>
+                        <option>Jelbuk</option>
+                        <option>Jenggawah</option>
+                        <option>Jombang</option>
+                        <option>Kalisat</option>
+                        <option>Kaliwates</option>
+                        <option>Kencong</option>
+                        <option>Ledokombo</option>
+                        <option>Mayang</option>
+                        <option>Mumbulsari</option>
+                        <option>Pakusari</option>
+                        <option>Panti</option>
+                        <option>Patrang</option>
+                        <option>Puger</option>
+                        <option>Rambipuji</option>
+                        <option>Semboro</option>
+                        <option>Silo</option>
+                        <option>Sukorambi</option>
+                        <option>Sukowono</option>
+                        <option>Sumber Baru</option>
+                        <option>Sumber Jambe</option>
+                        <option>Sumber Sari</option>
+                        <option>Tanggul</option>
+                        <option>Tempurejo</option>
+                        <option>Umbulsari</option>
+                        <option>Wuluhan</option>
+                      </select>
+                    </div>
+                    <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Kota</label>
+                    <input class="form-control" type="text" value="" name="add_kota">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">provinsi</label>
+                    <input class="form-control" type="text" value="" name="add_provinsi">
+                  </div>
+                </div>
+                </div>
+                
+                <div class="mb-3">
+                   <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="add_alamat"></textarea>
+                </div>
+                <div class="modal-footer">
+                      <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                      <button class="btn mb-2 btn-primary" type="submit" name="add-user">Add User</button>
+                    </div>
+                </div>
+                
+              </div>
+                    </div>
+                  </form>
+
+                
+              </div>
+
+            </div>
                   
       </main> <!-- main -->
+      
            </div> <!-- .wrapper -->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -388,30 +501,30 @@ if( !isset($_SESSION["login"])){
 
 require('config.php');
 // error_reporting(1);
-$eid = $_GET['id'];
-$enamalengkap = $_GET['txt_namalengkap'];
-$eusername = $_GET['txt_username'];
-$eemail = $_GET['txt_email'];
-$ekecamatan = $_GET['txt_kecamatan'];
-$ealamat = $_GET['txt_alamat'];
-$epassword = $_GET['txt_newpassword'];
+// $eid = $_GET['id'];
+// $enamalengkap = $_POST['txt_namalengkap'];
+// $eusername = $_POST['txt_username'];
+// $eemail = $_POST['txt_email'];
+// $ekecamatan = $_POST['txt_kecamatan'];
+// $ealamat = $_POST['txt_alamat'];
+// $epassword = $_POST['txt_newpassword'];
 
 
 
-if (isset($_POST['submit'])) {
-  if (isset($_POST['submit'])) {
-      $sql = mysqli_query($koneksi, "UPDATE `user` SET namalengkap='$enamalengkap', username='$eusername', email='$eemail', kecamatan='$ekecamatan', alamat='$ealamat', password='$epassword' WHERE id='$eid'");
-      echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'income_harian.php';}
-            })</script>";
-  } else {
-    echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'income_harian.php';}
-            })</script>";
-  }
-}
+// if (isset($_POST['submit'])) {
+//   if (isset($_POST['submit'])) {
+//       $sql = mysqli_query($koneksi, "UPDATE `user` SET namalengkap='$enamalengkap', username='$eusername', email='$eemail', kecamatan='$ekecamatan', alamat='$ealamat', password='$epassword' WHERE id='$eid'");
+//       echo "<script>
+//             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+//             }).then((result) => {if (result.value)
+//                 {window.location = 'income_harian.php';}
+//             })</script>";
+//   } else {
+//     echo "<script>
+//             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+//             }).then((result) => {if (result.value)
+//                 {window.location = 'income_harian.php';}
+//             })</script>";
+//   }
+// }
 ?>

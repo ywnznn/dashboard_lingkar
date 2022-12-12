@@ -644,7 +644,7 @@ $eemail = $_POST['email'];
 $enohp = $_POST['nohp'];
 $efoto = $_FILES['fotoedit']['name'];
 $file_tmp = $_FILES['fotoedit']['tmp_name'];
-move_uploaded_file($file_tmp, '../foto/user/' . $efoto);
+move_uploaded_file($file_tmp, './foto/user/' . $efoto);
 
 
 if (isset($_POST['submit'])) {

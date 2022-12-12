@@ -206,7 +206,7 @@ if( !isset($_SESSION["login"])){
             <p class="card-text">Ini adalah data penghasilan harian di lingkar angkringan dan cafe</p>
 
 
-            <!-- Pop up Add Karyawan -->
+            <!-- Pop up Add Income -->
             <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target="#verticalModal">Add Income</button>
 
              <div class="modal fade" id="verticalModal" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
@@ -254,7 +254,7 @@ if( !isset($_SESSION["login"])){
 
             </div>
             
-            <!-- End Pop Up Add Karyawan-->
+            <!-- End Pop Up Add Income-->
 
 
 
