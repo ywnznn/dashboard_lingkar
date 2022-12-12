@@ -63,7 +63,7 @@ if (isset($_POST['submit-reservation'])) {
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        <a href="index.php" class="logo">
                             <img src="assets/images/revisi logo no bg 2.png " chefs>
                         </a>
                         <!-- ***** Logo End ***** -->
