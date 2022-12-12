@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
     if ($jumlah_login == 1) {
         // $row = mysqli_fetch_assoc($result);
         $_SESSION["login"] = true;
+          $_SESSION["iduser"] = $data_login["id"];
         $_SESSION["ssuser"] = $data_login["username"];
     $_SESSION["ssfoto"] = $data_login["foto"];
     $_SESSION["ssfullname"] = $data_login["namalengkap"];
@@ -30,6 +31,8 @@ if (isset($_POST['submit'])) {
     $_SESSION["sskecamatan"] = $data_login["kecamatan"];
     $_SESSION["ssprovinsi"] = $data_login["provinsi"];
     $_SESSION["sspassword"] = $data_login["password"];
+    $_SESSION["ssnohp"] = $data_login["nohp"];
+  
         header("Location: dashboard.php");
         exit;
     } else {

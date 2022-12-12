@@ -302,13 +302,13 @@ if( !isset($_SESSION["login"])){
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Kota</label>
-                    <input class="form-control" type="text" value="" name="add_kota">
+                    <input class="form-control" type="text" value="jember" name="add_kota">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">provinsi</label>
-                    <input class="form-control" type="text" value="" name="add_provinsi">
+                    <input class="form-control" type="text" value="Jawa Timur" name="add_provinsi">
                   </div>
                 </div>
                 </div>
@@ -397,14 +397,14 @@ $noUrut++;
                             <td><?php echo $alamat; ?></td>
 
                             <td>
-                              <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
+                              <!-- <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button> -->
                               <button class="btn  btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
                             </td>
 
                         </tr>
                         <!-- Pop Up Edit -->
 
-                        <div class="modal fade modal-left modal-slide" id="modal-edit<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                        <!-- <div class="modal fade modal-left modal-slide" id="modal-edit<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
                             <div class="modal-content >"><br>
 
@@ -456,7 +456,7 @@ $noUrut++;
 
                             </div>
                           </div>
-                        </div>
+                        </div> -->
 
                         <!-- End Pop Up Edit -->
 
@@ -476,7 +476,7 @@ $noUrut++;
                                 <div class="modal-body">
                                   <div class="row">
 
-                                    Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['username'] ?>
+                                    Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['namalengkap'] ?>
                                     <br>
                                     <br>
 
@@ -646,8 +646,7 @@ $noUrut++;
   <script src="js/config.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     $(document).ready(function() {
       $('#tableku').DataTable();
